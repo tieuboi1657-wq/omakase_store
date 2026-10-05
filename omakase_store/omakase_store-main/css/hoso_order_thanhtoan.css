@@ -1,0 +1,485 @@
+* {
+    box-sizing:border-box;
+    margin:0;
+    padding:0}
+
+html {
+    scroll-behavior:smooth}
+
+body {
+    font-family:Arial,Helvetica,sans-serif;
+    background:#090909;
+    color:#eee;
+    line-height:1.5}
+
+button,input {
+    font:inherit}
+
+button {
+    cursor:pointer}
+
+.page {
+    min-height:100vh;
+    padding:18px}
+
+.shell {
+    width:min(1280px,100%);
+    margin:auto;
+    background:#151515;
+    box-shadow:0 20px 70px #000;
+    overflow:hidden}
+
+.hero {
+    min-height:590px;
+    position:relative;
+    background:linear-gradient(90deg,rgba(0,0,0,.15),rgba(0,0,0,.65)),url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1600&q=85') center/cover}
+
+.hero:after {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(0deg,rgba(0,0,0,.9),transparent 60%)}
+
+.brand {
+    position:relative;
+    z-index:2;
+    padding:28px 34px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    letter-spacing:3px;
+    font-size:12px}
+
+.logo {
+    display:flex;
+    gap:12px;
+    align-items:center}
+
+.logo-badge {
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:#bd1e1e;
+    font-size:21px}
+
+.hero-text {
+    position:absolute;
+    z-index:2;
+    left:38px;
+    right:38px;
+    bottom:35px}
+
+.quote {
+    font-family:Georgia,serif;
+    font-size:28px;
+    font-style:italic;
+    max-width:560px}
+
+.line {
+    width:40px;
+    height:1px;
+    background:#d2b36a;
+    margin:20px 0 9px}
+
+.small {
+    color:#c9b789;
+    letter-spacing:3px;
+    font-size:11px}
+
+.features {
+    display:flex;
+    gap:25px;
+    margin-top:22px;
+    color:#ccc;
+    font-size:12px}
+
+.nav {
+    display:flex;
+    gap:10px;
+    padding:14px 24px;
+    background:#101010;
+    border-top:1px solid #292929;
+    border-bottom:1px solid #292929;
+    position:sticky;
+    top:0;
+    z-index:10}
+
+.nav button {
+    background:transparent;
+    color:#aaa;
+    border:1px solid transparent;
+    padding:10px 14px}
+
+.nav button:hover,.nav button.active {
+    color:#fff;
+    border-color:#6f2929;
+    background:#1b1b1b}
+
+.content {
+    padding:42px}
+
+.section {
+    display:none}
+
+.section.active {
+    display:block}
+
+.top {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#aaa;
+    font-size:12px;
+    letter-spacing:2px}
+
+.top strong {
+    color:#c92727;
+    font-size:18px}
+
+.title {
+    margin-top:18px}
+
+.title h1 {
+    font-family:Georgia,serif;
+    font-size:40px;
+    font-weight:400;
+    margin-bottom:8px}
+
+.title p {
+    color:#999}
+
+.divider {
+    height:1px;
+    background:#333;
+    margin:25px 0}
+
+.products {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px}
+
+.card {
+    background:#202020;
+    border:1px solid #2e2e2e;
+    padding:12px;
+    transition:.2s}
+
+.card:hover {
+    transform:translateY(-3px);
+    border-color:#6f2929}
+
+.card img {
+    width:100%;
+    height:155px;
+    object-fit:cover}
+
+.card h3 {
+    font-size:15px;
+    margin:10px 0 4px}
+
+.card p {
+    font-size:12px;
+    color:#888;
+    height:38px}
+
+.price {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:10px}
+
+.price b {
+    color:#d8b77a}
+
+.add,.primary {
+    background:#b91e1e;
+    color:#fff;
+    border:0;
+    padding:9px 12px}
+
+.add:hover,.primary:hover {
+    background:#db2b2b}
+
+.layout {
+    display:grid;
+    grid-template-columns:1.7fr 1fr;
+    gap:25px}
+
+.panel {
+    background:#1c1c1c;
+    border:1px solid #303030;
+    padding:22px}
+
+.panel h2 {
+    font-family:Georgia,serif;
+    font-weight:400;
+    margin-bottom:17px}
+
+.cart-table {
+    width:100%;
+    border-collapse:collapse}
+
+.cart-table th,.cart-table td {
+    text-align:left;
+    padding:13px 8px;
+    border-bottom:1px solid #333;
+    font-size:13px}
+
+.cart-table th {
+    color:#aaa;
+    font-weight:400}
+
+.qty {
+    display:flex;
+    align-items:center;
+    gap:8px}
+
+.qty button {
+    width:27px;
+    height:27px;
+    border:1px solid #555;
+    background:#111;
+    color:#fff}
+
+.remove {
+    background:none;
+    border:0;
+    color:#c65b5b}
+
+.summary-row {
+    display:flex;
+    justify-content:space-between;
+    margin:11px 0;
+    color:#aaa}
+
+.summary-row.total {
+    font-size:19px;
+    color:#fff;
+    border-top:1px solid #333;
+    padding-top:15px}
+
+.summary-row.total b {
+    color:#d8b77a}
+
+.actions {
+    display:flex;
+    gap:10px;
+    margin-top:20px}
+
+.secondary {
+    background:#2a2a2a;
+    color:#ddd;
+    border:1px solid #444;
+    padding:12px 15px}
+
+.full {
+    width:100%}
+
+.form-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px}
+
+.field {
+    margin-bottom:13px}
+
+.field label {
+    display:block;
+    color:#aaa;
+    font-size:12px;
+    letter-spacing:1px;
+    margin-bottom:7px}
+
+.field input,.field select,.field textarea {
+    width:100%;
+    background:#101010;
+    border:1px solid #3a3a3a;
+    color:#fff;
+    padding:11px;
+    outline:none}
+
+.field textarea {
+    min-height:80px;
+    resize:vertical}
+
+.profile {
+    display:grid;
+    grid-template-columns:260px 1fr;
+    gap:25px}
+
+.avatar-box {
+    text-align:center}
+
+.avatar {
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    margin:5px auto 15px;
+    background:#b91e1e;
+    display:grid;
+    place-items:center;
+    font-size:38px}
+
+.profile-menu {
+    border-top:1px solid #333;
+    margin-top:20px}
+
+.profile-menu button {
+    width:100%;
+    padding:13px;
+    text-align:left;
+    background:transparent;
+    color:#aaa;
+    border:0;
+    border-bottom:1px solid #2d2d2d}
+
+.profile-menu button:hover {
+    color:#fff;
+    background:#242424}
+
+.history-card {
+    border:1px solid #333;
+    background:#1b1b1b;
+    margin-bottom:15px;
+    padding:18px}
+
+.history-head {
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:14px}
+
+.status {
+    color:#9dcc83}
+
+.history-table {
+    width:100%;
+    border-collapse:collapse}
+
+.history-table th,.history-table td {
+    padding:8px;
+    border-bottom:1px solid #303030;
+    text-align:left;
+    font-size:13px}
+
+.payment {
+    margin-top:18px}
+
+.radio {
+    display:flex;
+    gap:10px;
+    align-items:center;
+    margin:10px 0;
+    color:#ccc}
+
+.notice {
+    background:#211d14;
+    border:1px solid #4a3d24;
+    color:#d8b77a;
+    padding:12px;
+    margin-bottom:15px;
+    font-size:13px}
+
+.booking-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px}
+
+.booking-types {
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:20px}
+
+.booking-types button {
+    background:#111;
+    border:1px solid #444;
+    color:#aaa;
+    padding:9px 12px}
+
+.booking-types button.active {
+    border-color:#b91e1e;
+    color:#fff;
+    background:#271414}
+
+.toast {
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#c32222;
+    color:#fff;
+    padding:12px 18px;
+    opacity:0;
+    transform:translateY(20px);
+    transition:.3s;
+    z-index:50}
+
+.toast.show {
+    opacity:1;
+    transform:none}
+
+.empty {
+    color:#777;
+    padding:20px;
+    text-align:center}
+
+.footer {
+    padding:25px 42px;
+    background:#101010;
+    border-top:1px solid #2a2a2a;
+    color:#777;
+    text-align:center;
+    font-size:12px}
+
+@media(max-width:900px) {
+    .products {
+    grid-template-columns:repeat(2,1fr)}
+
+.layout,.booking-grid,.profile {
+    grid-template-columns:1fr}
+
+.hero {
+    min-height:480px}
+
+.content {
+    padding:25px}
+
+.nav {
+    overflow:auto}
+
+.nav button {
+    white-space:nowrap}
+}
+
+@media(max-width:520px) {
+    .page {
+    padding:0}
+
+.products {
+    grid-template-columns:1fr}
+
+.brand {
+    padding:20px}
+
+.brand>span {
+    display:none}
+
+.hero-text {
+    left:24px}
+
+.quote {
+    font-size:22px}
+
+.content {
+    padding:18px}
+
+.form-grid {
+    grid-template-columns:1fr}
+
+.cart-table th:nth-child(2),.cart-table td:nth-child(2) {
+    display:none}
+
+.actions {
+    flex-direction:column}
+}

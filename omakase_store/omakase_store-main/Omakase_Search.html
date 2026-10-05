@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabi Omakase - Tìm Kiếm</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/Omakase_Search.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">祥</span>
+        <span class="brand-text">SABI OMAKASE <small>一期一会</small></span>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html">Trang chủ</a>
+        <a href="Omakase_Menu.html">Thực đơn</a>
+        <a href="hoso_order_thanhtoan.html?view=booking">Đặt chỗ</a>
+        <a href="index.html#triet-ly">Về chúng tôi</a>
+        <a href="danhgia.html">Liên hệ</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="Omakase_Search.html" class="icon-btn" title="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <button class="icon-btn" title="Giỏ đặt bàn"
+          onclick="location.href='hoso_order_thanhtoan.html?view=cart'"><i class="fa-solid fa-bag-shopping"></i><span class="badge">1</span></button>
+        <a href="login.html" class="avatar-btn" title="Tài khoản / Đăng nhập"><i class="fa-regular fa-user"></i></a>
+        <a href="hoso_order_thanhtoan.html?view=booking" class="btn btn-primary">ĐẶT BÀN</a>
+      </div>
+    </div>
+  </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <i class="fa-solid fa-house" style="margin-right: 5px;"></i> Trang chủ <span
+            style="margin: 0 5px; color: #444;">/</span> <span class="current">Tìm kiếm thực đơn</span>
+    </div>
+
+    <!-- Search Hero Section -->
+    <section class="search-hero">
+        <div class="search-tag"><i class="fa-solid fa-circle"
+                style="font-size: 6px; margin-right: 6px; color: var(--primary-red);"></i>TUYỂN TẬP ẨM THỰC OMAKASE
+            THƯỢNG HẠNG</div>
+        <h1>Khám Phá Hương Vị Mùa Thu Toyosu</h1>
+
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" value="Omakase">
+            <button>TÌM KIẾM <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+
+        <div class="search-suggestions">
+            <span class="label"><i class="fa-solid fa-arrow-turn-up" style="transform: rotate(90deg);"></i> Gợi
+                ý:</span>
+            <span class="tag">Set Otoro Thượng Hạng</span>
+            <span class="tag">Omakase Trưa</span>
+            <span class="tag">Bếp Trưởng Daiki</span>
+            <span class="tag">Wagyu A5</span>
+            <span class="tag">Kaiseki</span>
+        </div>
+    </section>
+
+    <!-- Results Header -->
+    <div class="results-header">
+        <div class="results-text">
+            <span class="dot"></span> Tìm thấy <strong>8 kết quả</strong> phù hợp cho từ khoá: <em>"Omakase"</em>
+        </div>
+        <div class="sort-by">
+            SẮP XẾP THEO:
+            <div class="custom-select-wrapper">
+                <select class="custom-select">
+                    <option>Được khuyên dùng nhất</option>
+                    <option>Giá tăng dần</option>
+                    <option>Giá giảm dần</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Sidebar Filter -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fa-solid fa-sliders"></i> Bộ Lọc Tìm Kiếm</h3>
+                <button class="clear-btn">XÓA LỌC</button>
+            </div>
+
+            <div class="filter-group">
+                <h4><i class="fa-solid fa-square" style="font-size: 4px;"></i> DANH MỤC THỰC ĐƠN</h4>
+                <label class="checkbox-container">
+                    <div class="label-text">
+                        <span>Set Omakase Đặc Trưng</span>
+                        <span class="count">(6)</span>
+                    </div>
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox-container">
+                    <div class="label-text">
+                        <span>Nigiri Tuyển Chọn</span>
+                        <span class="count">(3)</span>
+                    </div>
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox-container">
+                    <div class="label-text">
+                        <span>Sashimi Tươi Sống</span>
+                        <span class="count">(4)</span>
+                    </div>
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox-container">
+                    <div class="label-text">
+                        <span>Sake Cao Cấp (Pairing)</span>
+                        <span class="count">(2)</span>
+                    </div>
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+
+            <div class="filter-group">
+                <h4><i class="fa-solid fa-square" style="font-size: 4px;"></i> KHOẢNG GIÁ <span
+                        style="float:right; color:var(--text-gray); font-size:9px;">1M - 5M+ đ</span></h4>
+                <div class="range-slider-mock">
+                    <div class="active-track"></div>
+                    <div class="thumb left"></div>
+                    <div class="thumb right"></div>
+                </div>
+                <div class="slider-labels">
+                    <span>1.000.000 <u>đ</u></span>
+                    <span>5.000.000 <u>đ</u></span>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h4><i class="fa-solid fa-square" style="font-size: 4px;"></i> CHI NHÁNH PHỤC VỤ</h4>
+                <label class="checkbox-container">
+                    <div class="label-text"><span>Quận 1 (Sài Gòn)</span></div>
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox-container">
+                    <div class="label-text"><span>Quận 5 (Chợ Lớn)</span></div>
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox-container">
+                    <div class="label-text"><span>Tây Hồ (Hà Nội)</span></div>
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+
+            <div class="filter-group" style="border-bottom: none; margin-bottom: 20px;">
+                <h4><i class="fa-solid fa-square" style="font-size: 4px;"></i> ĐÁNH GIÁ TỐI THIỂU</h4>
+                <label class="radio-container">
+                    <div class="label-text">
+                        <span>Từ 4.8 sao</span>
+                        <span class="stars">
+                            <i class="fa-solid fa-star active"></i>
+                            <i class="fa-solid fa-star active"></i>
+                            <i class="fa-solid fa-star active"></i>
+                            <i class="fa-solid fa-star active"></i>
+                            <i class="fa-regular fa-star active"></i>
+                        </span>
+                    </div>
+                    <input type="radio" name="rating" checked>
+                    <span class="radiomark"></span>
+                </label>
+                <label class="radio-container">
+                    <div class="label-text">
+                        <span>Từ 4.5 sao</span>
+                        <span class="stars">
+                            <i class="fa-solid fa-star active"></i>
+                            <i class="fa-solid fa-star active"></i>
+                            <i class="fa-solid fa-star active"></i>
+                            <i class="fa-solid fa-star active"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                    </div>
+                    <input type="radio" name="rating">
+                    <span class="radiomark"></span>
+                </label>
+                <label class="radio-container">
+                    <div class="label-text">
+                        <span>Từ 4.0 sao</span>
+                        <span class="stars">
+                            <i class="fa-solid fa-star active"></i>
+                            <i class="fa-solid fa-star active"></i>
+                            <i class="fa-solid fa-star active"></i>
+                            <i class="fa-solid fa-star active"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                    </div>
+                    <input type="radio" name="rating">
+                    <span class="radiomark"></span>
+                </label>
+            </div>
+
+            <button class="btn-apply"><i class="fa-solid fa-filter"></i> ÁP DỤNG BỘ LỌC</button>
+        </aside>
+
+        <!-- Product List -->
+        <div class="product-area">
+            <div class="product-grid">
+                <!-- Card 1 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <span class="product-tag tag-red">PHÙ HỢP NHẤT</span>
+                        <i class="fa-regular fa-heart product-heart"></i>
+                        <span class="product-bottom-tag">18 MÓN TINH HOA</span>
+                        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?q=80&w=600&auto=format&fit=crop"
+                            alt="Sushi">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-meta">
+                            <span class="meta-tag">CHEF DAIKI SELECTION</span>
+                            <span class="meta-rating"><i class="fa-regular fa-star"></i> 5.0 (68)</span>
+                        </div>
+                        <h3 class="product-title">Set Kiwami Grand Omakase</h3>
+                        <p class="product-desc">Trải nghiệm cực phẩm cá ngừ vây xanh Otoro ủ tuyết 14 ngày, nhum biển...
+                        </p>
+                        <div class="product-bottom">
+                            <div>
+                                <span class="price-label">GIÁ MỖI KHÁCH</span>
+                                <span class="price-val">3.800.000 <u>đ</u></span>
+                            </div>
+                            <div class="product-action">CHI TIẾT <i class="fa-solid fa-chevron-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <span class="product-tag tag-dark">MÙA THU TUYỂN CHỌN</span>
+                        <i class="fa-regular fa-heart product-heart"></i>
+                        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=600&auto=format&fit=crop"
+                            alt="Uni">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-meta">
+                            <span class="meta-tag">SIGNATURE DEGUSTATION</span>
+                            <span class="meta-rating"><i class="fa-regular fa-star"></i> 4.9 (45)</span>
+                        </div>
+                        <h3 class="product-title">Set Uni & Caviar Special</h3>
+                        <p class="product-desc">Sự đối xứng với nhum đỏ Nemuro kết hợp trứng cá tầm hoàng gia
+                            Oscietra...</p>
+                        <div class="product-bottom">
+                            <div>
+                                <span class="price-label">GIÁ MỖI KHÁCH</span>
+                                <span class="price-val">4.200.000 <u>đ</u></span>
+                            </div>
+                            <div class="product-action">CHI TIẾT <i class="fa-solid fa-chevron-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <span class="product-tag tag-dark">EDOMAE CỔ ĐIỂN</span>
+                        <i class="fa-regular fa-heart product-heart"></i>
+                        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=600&auto=format&fit=crop"
+                            alt="Akami">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-meta">
+                            <span class="meta-tag">TRUYỀN THỐNG TOKYO</span>
+                            <span class="meta-rating"><i class="fa-regular fa-star"></i> 4.8 (39)</span>
+                        </div>
+                        <h3 class="product-title">Set Akami Edomae</h3>
+                        <p class="product-desc">Hành trình vị giác thuần túy kỷ niệm phong cách Edo thế kỷ 19: cá ngừ...
+                        </p>
+                        <div class="product-bottom">
+                            <div>
+                                <span class="price-label">GIÁ MỖI KHÁCH</span>
+                                <span class="price-val">2.600.000 <u>đ</u></span>
+                            </div>
+                            <div class="product-action">CHI TIẾT <i class="fa-solid fa-chevron-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <span class="product-tag tag-red">TƯƠI SỐNG HẰNG NGÀY</span>
+                        <i class="fa-regular fa-heart product-heart"></i>
+                        <img src="https://images.unsplash.com/photo-1617196034183-421b4917c92d?q=80&w=600&auto=format&fit=crop"
+                            alt="Sashimi">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-meta">
+                            <span class="meta-tag">TOYOSU DIRECT</span>
+                            <span class="meta-rating"><i class="fa-regular fa-star"></i> 5.0 (51)</span>
+                        </div>
+                        <h3 class="product-title">Set Sashimi Matsu</h3>
+                        <p class="product-desc">Bộ sưu tập 9 loại hải sản cao cấp vận chuyển đường hàng không buổi
+                            sáng...</p>
+                        <div class="product-bottom">
+                            <div>
+                                <span class="price-label">GIÁ MỖI KHÁCH</span>
+                                <span class="price-val">3.200.000 <u>đ</u></span>
+                            </div>
+                            <div class="product-action">CHI TIẾT <i class="fa-solid fa-chevron-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <span class="product-tag tag-dark">MÙA THU KYOTO</span>
+                        <i class="fa-regular fa-heart product-heart"></i>
+                        <img src="./images/wagyu_otoro.jpg"
+                            alt="Wagyu">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-meta">
+                            <span class="meta-tag">KAISEKI NGHỆ THUẬT</span>
+                            <span class="meta-rating"><i class="fa-regular fa-star"></i> 4.9 (33)</span>
+                        </div>
+                        <h3 class="product-title">Set Kaiseki Mùa Thu</h3>
+                        <p class="product-desc">Bản hòa tấu của nấm Matsutake thượng hạng, bò Wagyu A5 nướng...</p>
+                        <div class="product-bottom">
+                            <div>
+                                <span class="price-label">GIÁ MỖI KHÁCH</span>
+                                <span class="price-val">4.500.000 <u>đ</u></span>
+                            </div>
+                            <div class="product-action">CHI TIẾT <i class="fa-solid fa-chevron-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <span class="product-tag tag-green">TRẢI NGHIỆM ĐỘC BẢN</span>
+                        <i class="fa-regular fa-heart product-heart"></i>
+                        <img src="https://images.unsplash.com/photo-1558985250-27a406d64cb3?q=80&w=600&auto=format&fit=crop"
+                            alt="Sake">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-meta">
+                            <span class="meta-tag">SOMMELIER SELECTION</span>
+                            <span class="meta-rating"><i class="fa-regular fa-star"></i> 5.0 (27)</span>
+                        </div>
+                        <h3 class="product-title">Set Omakase Sake Pairing</h3>
+                        <p class="product-desc">Trọn vẹn 16 món sushi đi kèm 6 loại rượu Sake Junmai Daiginjo thủ công
+                            t...</p>
+                        <div class="product-bottom">
+                            <div>
+                                <span class="price-label">GIÁ MỖI KHÁCH</span>
+                                <span class="price-val">4.900.000 <u>đ</u></span>
+                            </div>
+                            <div class="product-action">CHI TIẾT <i class="fa-solid fa-chevron-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination Wrapper -->
+            <div class="pagination-wrapper">
+                <div class="pagination-info">
+                    Hiển thị 1 - 6 trong số <strong>8 kết quả</strong>
+                </div>
+                <div class="pagination">
+                    <a href="#" class="prev"><i class="fa-solid fa-chevron-left"></i></a>
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#" class="next"><i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pre-Footer Banner -->
+    <section class="pre-footer-banner">
+        <div class="banner-content">
+            <div class="banner-tag">NGHI THỨC DÙNG BỮA RIÊNG TƯ</div>
+            <h2>Bạn có yêu cầu ẩm thực đặc biệt hoặc dị ứng thực phẩm?</h2>
+            <p>Bếp trưởng Sabi Omakase luôn chuẩn bị kỹ lưỡng thực đơn cá nhân hóa cho từng thực khách theo tiêu chuẩn
+                khắt khe nhất của Nhật Bản.</p>
+        </div>
+        <button class="btn-primary"><i class="fa-regular fa-envelope"></i> LIÊN HỆ BẾP TRƯỞNG</button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col brand-col">
+                <div class="navbar-logo" style="margin-bottom: 20px;">
+                    <div class="logo-icon"
+                        style="background-color: transparent; border: 1px solid var(--border-color); padding: 5px; border-radius: 4px;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1895/1895684.png" alt="Sabi Logo"
+                            style="width: 20px; filter: invert(1);">
+                    </div>
+                    <div>
+                        <div class="logo-text" style="font-size: 16px;">SABI OMAKASE</div>
+                    </div>
+                </div>
+                <p>Tận hưởng triết lý Wabi-Sabi qua từng thớ cá tinh khiết. Nơi nghệ thuật Omakase giao hòa giữa sự tối
+                    giản thuần túy và nghi thức ẩm thực thượng lưu Nhật Bản.</p>
+                <div class="locations">TOKYO • KYOTO • SAIGON</div>
+            </div>
+            <div class="footer-col">
+                <h4>Điều hướng</h4>
+                <ul>
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="#">Thực đơn Omakase</a></li>
+                    <li><a href="#">Đặt chỗ & Giỏ hàng</a></li>
+                    <li><a href="#">Lịch sử đặt tiệc</a></li>
+                    <li><a href="#">Về chúng tôi</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Liên hệ</h4>
+                <ul>
+                    <li><i class="fa-solid fa-phone"></i> +123456789</li>
+                    <li><i class="fa-solid fa-envelope"></i> reservation@sabiomakase.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> <span>12 đường số 3, Phường 4, Quận 5, Thành phố
+                            6</span></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Giờ mở cửa</h4>
+                <ul class="hours-list">
+                    <li><span>Thứ 2 - Thứ 6:</span> 17:30 - 22:30</li>
+                    <li><span>Thứ 7 - CN:</span>
+                        <div>11:30 - 14:00<br>17:30 - 23:00</div>
+                    </li>
+                </ul>
+                <button class="btn-outline w-100 mt-20"
+                    style="font-size: 10px; padding: 12px; letter-spacing: 0.5px;">CHỈ NHẬN PHỤC VỤ ĐẶT TRƯỚC</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2024 Sabi Omakase. Bản quyền thuộc về nhà hàng.</div>
+            <div>Cam kết nguồn nguyên liệu tươi nhập khẩu trực tiếp từ chợ Toyosu mỗi sáng.</div>
+        </div>
+    </footer>
+
+<!-- THÊM ĐOẠN SCRIPT NÀY VÀO TRƯỚC THẺ </body> -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // 1. Lấy các phần tử cần thiết
+    const searchBar = document.querySelector(".search-bar");
+    const searchInput = searchBar ? searchBar.querySelector("input") : null;
+    const searchBtn = searchBar ? searchBar.querySelector("button") : null;
+    const suggestionTags = document.querySelectorAll(".search-suggestions .tag");
+    const resultsText = document.querySelector(".results-text");
+    const productCards = document.querySelectorAll(".product-card");
+
+    // 2. Hàm xử lý lọc danh sách món ăn theo từ khóa
+    function handleSearch(keyword) {
+        if (!keyword) return;
+        const query = keyword.toLowerCase().trim();
+        let matchCount = 0;
+
+        productCards.forEach(card => {
+            const title = card.querySelector(".product-title")?.textContent.toLowerCase() || "";
+            const desc = card.querySelector(".product-desc")?.textContent.toLowerCase() || "";
+            const meta = card.querySelector(".meta-tag")?.textContent.toLowerCase() || "";
+
+            // Kiểm tra xem từ khóa có nằm trong Tiêu đề, Mô tả hoặc Meta tag không
+            if (title.includes(query) || desc.includes(query) || meta.includes(query)) {
+                card.style.display = "block"; // Hiển thị card phù hợp
+                matchCount++;
+            } else {
+                card.style.display = "none";  // Ẩn card không phù hợp
+            }
+        });
+
+        // Cập nhật lại dòng chữ báo số lượng kết quả trên giao diện
+        if (resultsText) {
+            resultsText.innerHTML = `<span class="dot"></span> Tìm thấy <strong>${matchCount} kết quả</strong> phù hợp cho từ khoá: <em>"${keyword}"</em>`;
+        }
+    }
+
+    // 3. Sự kiện khi BẤM NÚT TÌM KIẾM
+    if (searchBtn && searchInput) {
+        searchBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            handleSearch(searchInput.value);
+        });
+
+        // Bấm nút Enter trong ô input cũng chạy tìm kiếm
+        searchInput.addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                handleSearch(searchInput.value);
+            }
+        });
+    }
+
+    // 4. Sự kiện khi BẤM VÀO CÁC THẺ GỢI Ý (Set Otoro, Wagyu A5...)
+    suggestionTags.forEach(tag => {
+        tag.addEventListener("click", function () {
+            const selectedText = this.textContent.trim();
+            if (searchInput) {
+                searchInput.value = selectedText;
+            }
+            handleSearch(selectedText);
+        });
+    });
+});
+</script>
+
+</body>
+</html>
+</body>
+
+</html>

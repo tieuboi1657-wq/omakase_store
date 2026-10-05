@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lịch Sử Đặt Chỗ - Sabi Omakase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/history.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER (giống trang chủ) ============ -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">祥</span>
+        <span class="brand-text">SABI OMAKASE<small>祥び 御任せ</small></span>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html">Trang chủ</a>
+        <a href="menu.html">Thực đơn</a>
+        <a href="hoso_order_thanhtoan.html?view=booking">Đặt chỗ</a>
+        <a href="index.html#triet-ly">Về chúng tôi</a>
+        <a href="danhgia.html">Liên hệ</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" title="Tìm kiếm" onclick="location.href='search.html'">&#128269;</button>
+        <button class="icon-btn" title="Giỏ đặt bàn" onclick="location.href='hoso_order_thanhtoan.html?view=cart'">&#128717;<span class="badge">1</span></button>
+        <a href="login.html" class="avatar-btn" title="Tài khoản"></a>
+        <a href="hoso_order_thanhtoan.html?view=booking" class="btn btn-primary">Đặt Bàn</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container history-page">
+
+    <p class="breadcrumb"><a href="index.html">Trang chủ</a> / <span class="current">Tài khoản thượng khách</span></p>
+
+    <div class="history-head">
+      <div>
+        <h1>Lịch Sử Đặt Chỗ &amp; Đơn Hàng</h1>
+        <p>Theo dõi mọi lịch sử đặt tiệc, thanh toán và đặc quyền tích lũy của quý khách hàng thượng khách Sabi Omakase.</p>
+      </div>
+      <div class="spend-badge">
+        <div class="amount">27.530.000đ</div>
+        <div class="label">Tổng chi tiêu</div>
+      </div>
+    </div>
+
+    <div class="history-layout">
+
+      <!-- ============ SIDEBAR TÀI KHOẢN ============ -->
+      <aside class="account-card">
+        <div class="avatar-lg"></div>
+        <div class="name">Trần Đình Khang</div>
+        <div class="rank">Thượng khách Kurogane (VIP) &middot; 1.890 P</div>
+
+        <nav class="account-nav">
+          <a href="hoso_order_thanhtoan.html?view=profile">Hồ sơ cá nhân</a>
+          <a href="lich-su-dat-cho.html" class="active">Lịch sử đặt tiệc &amp; đơn hàng</a>
+          <!-- TODO: nối sang trang ưu đãi & thẻ thành viên (chưa dựng) -->
+          <a href="#">Ưu đãi &amp; Thẻ thành viên</a>
+          <!-- TODO: nối sang trang thông báo (chưa dựng) -->
+          <a href="#">Thông báo &amp; Lời mời đặc biệt</a>
+          <a href="index.html#chi-nhanh">Chi nhánh yêu thích</a>
+          <a href="login.html">Đăng xuất tài khoản</a>
+        </nav>
+
+        <div class="account-promo">
+          &#127873; Ưu đãi sinh nhật: tặng 1 chai Sake nếu đặt bàn trong 24 giờ tới.
+        </div>
+
+        <div class="account-support">&#128222; Hỗ trợ thượng khách: 090.123.4567</div>
+      </aside>
+
+      <!-- ============ MAIN ============ -->
+      <div class="history-main">
+
+        <div class="filter-bar">
+          <div class="filter-tabs">
+            <button class="active">Tất cả (4)</button>
+            <button>Đang xử lý (1)</button>
+            <button>Đã hoàn tất (2)</button>
+            <button>Đã hủy (1)</button>
+          </div>
+          <div class="order-search">
+            <span class="ic">&#128269;</span>
+            <input type="text" placeholder="Tìm theo mã đơn, tên set..." />
+          </div>
+        </div>
+
+        <!-- ============ DANH SÁCH ĐƠN ============ -->
+        <div class="order-card">
+          <div class="thumb"><img src="images/dish-kiwami.svg" alt="Kiwami Grand Omakase" /></div>
+          <div class="info">
+            <h3>Kiwami Grand Omakase</h3>
+            <div class="meta"><span>2 khách</span><span>18:00 hôm nay</span><span>Quầy bar chính</span></div>
+          </div>
+          <div class="side">
+            <span class="price">5.680.000đ</span>
+            <span class="status-badge success">ĐÃ THANH TOÁN</span>
+          </div>
+          <a href="detail.html?id=kiwami" class="btn btn-outline" style="padding:8px 14px;font-size:12px;">Xem Chi Tiết</a>
+        </div>
+
+        <div class="order-card">
+          <div class="thumb"><img src="images/dish-matsu.svg" alt="Set Miyabi Kaiseki" /></div>
+          <div class="info">
+            <h3>Set Miyabi Kaiseki (14 món)</h3>
+            <div class="meta"><span>4 khách</span><span>19:00 &middot; 12/10/2026</span><span>Phòng riêng</span></div>
+          </div>
+          <div class="side">
+            <span class="price">11.200.000đ</span>
+            <span class="status-badge pending">ĐANG XỬ LÝ</span>
+          </div>
+          <a href="detail.html?id=miyabi" class="btn btn-outline" style="padding:8px 14px;font-size:12px;">Xem Chi Tiết</a>
+        </div>
+
+        <div class="order-card">
+          <div class="thumb"><img src="images/dish-sakura.svg" alt="Set Sakura Seasonal" /></div>
+          <div class="info">
+            <h3>Set Sakura Seasonal</h3>
+            <div class="meta"><span>2 khách</span><span>12:00 &middot; 28/09/2026</span><span>Bàn ngoài trời</span></div>
+          </div>
+          <div class="side">
+            <span class="price">4.700.000đ</span>
+            <span class="status-badge success">ĐÃ THANH TOÁN</span>
+          </div>
+          <a href="detail.html?id=sakura" class="btn btn-outline" style="padding:8px 14px;font-size:12px;">Xem Chi Tiết</a>
+        </div>
+
+        <div class="order-card">
+          <div class="thumb"><img src="images/dish-wagyu.svg" alt="Set Tsuki Nigiri" /></div>
+          <div class="info">
+            <h3>Set Tsuki Nigiri</h3>
+            <div class="meta"><span>1 khách</span><span>13:00 &middot; 02/09/2026</span><span>Quận 1</span></div>
+          </div>
+          <div class="side">
+            <span class="price">1.990.000đ</span>
+            <span class="status-badge danger">ĐÃ HỦY</span>
+          </div>
+          <a href="hoso_order_thanhtoan.html?view=cart&name=Set%20Tsuki%20Nigiri&price=1950000&qty=1" class="btn btn-outline" style="padding:8px 14px;font-size:12px;">Đặt Lại</a>
+        </div>
+
+        <!-- ============ PHƯƠNG THỨC THANH TOÁN ============ -->
+        <div class="payment-section">
+          <h2>Phương Thức Thanh Toán Bảo Lưu</h2>
+          <div class="payment-grid">
+            <div class="payment-card">
+              <div class="ptype">&#128179; Visa / Mastercard</div>
+              <div class="pmain">•••• 8829</div>
+              <div class="psub">Hết hạn 11/27</div>
+            </div>
+            <div class="payment-card">
+              <div class="ptype">&#128241; Chuyển khoản QR</div>
+              <div class="pmain">Napas 247</div>
+              <div class="psub">Vietcombank</div>
+            </div>
+            <div class="payment-card">
+              <div class="ptype">&#127825; Apple Pay / Ví Sabi</div>
+              <div class="pmain">Thiết bị</div>
+              <div class="psub">iPhone 15 Pro Max</div>
+            </div>
+          </div>
+
+          <div class="payment-actions">
+            <!-- TODO: mở modal thêm thẻ mới (chưa dựng) -->
+            <a href="#" class="btn btn-outline">+ Thêm thẻ hoặc phương thức mới</a>
+            <!-- TODO: xử lý lưu cập nhật thật (chưa dựng) -->
+            <a href="#" class="btn btn-primary">Xác Nhận &amp; Cập Nhật Phương Thức Thanh Toán</a>
+          </div>
+        </div>
+
+        <details class="history-note">
+          <summary>Quy chuẩn &amp; Lưu ý đặt tiệc Sabi</summary>
+          Các đơn đặt tiệc theo yêu cầu riêng (set menu tùy chỉnh, phòng riêng trên 6 khách) cần cọc trước tối thiểu 10 giờ so với giờ dùng bữa. Vui lòng liên hệ hotline thượng khách nếu cần thay đổi giờ hẹn trong vòng 24 giờ.
+        </details>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER (giống trang chủ) ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="brand-mark">祥</span>
+            <span class="footer-brand-name">SABI OMAKASE</span>
+          </div>
+          <p class="footer-about">Tận hưởng triết lý Wabi Sabi qua từng thớ cá tinh khiết.</p>
+        </div>
+        <div>
+          <h4>Điều hướng</h4>
+          <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="menu.html">Thực đơn Omakase</a></li>
+            <li><a href="lich-su-dat-cho.html">Lịch sử đặt tiệc</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Liên hệ</h4>
+          <ul>
+            <li>&#128222; +123456789</li>
+            <li>&#9993; reservation@sabiomakase.com</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Giờ mở cửa</h4>
+          <ul>
+            <li>Thứ 2 - Thứ 6: 17:30 - 22:30</li>
+            <li>Thứ 7 - CN: 11:30 - 14:00 / 17:30 - 23:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2024 Sabi Omakase. Bản quyền thuộc về nhà hàng.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

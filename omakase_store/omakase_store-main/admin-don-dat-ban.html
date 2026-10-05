@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Quản Lý Đơn & Lịch Đặt Bàn</title>
+    
+    <!-- Link Tailwind CSS CDN kèm cấu hình màu dark mode -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'background': '#121212',
+              'on-background': '#e6e1e5',
+              'surface-container': '#1e1e1e',
+              'surface-container-high': '#2b2b2b',
+              'surface-variant': '#49454f',
+              'outline-variant': '#49454f',
+              'primary': '#ffb4ab',
+              'on-primary': '#690005',
+              'primary-container': '#93000a'
+            }
+          }
+        }
+      }
+    </script>
+    <!-- Link Font & Icon -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&family=Noto+Serif:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/layoutt.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+
+  <div class="admin-layout">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="admin-sidebar">
+      <div class="brand">
+        <span class="brand-mark">祥</span>
+        <span class="brand-text">SABI OMAKASE<small>ADMIN · PRIMARY</small></span>
+      </div>
+
+      <p class="admin-nav-label">Tổng quan</p>
+      <nav class="admin-nav">
+        <a href="thongke.html"><span class="ic">&#128202;</span> Dashboard &amp; Thống kê</a>
+      </nav>
+
+      <p class="admin-nav-label">Vận hành</p>
+      <nav class="admin-nav">
+        <a href="admin-don-dat-ban.html" class="active"><span class="ic">&#128197;</span> Quản lý Đơn &amp; Đặt bàn</a>
+        <!-- TODO: nối sang trang quản lý thực đơn (chưa dựng) -->
+        <a href="#"><span class="ic">&#127860;</span> Quản lý Thực Đơn &amp; Set</a>
+        <a href="admin-nguoi-dung.html"><span class="ic">&#128101;</span> Người Dùng &amp; Thượng Khách</a>
+      </nav>
+
+      <p class="admin-nav-label">Hệ thống</p>
+      <nav class="admin-nav">
+        <a href="doanhthu.html"><span class="ic">&#128200;</span> Báo cáo Doanh Thu</a>
+        <!-- TODO: nối sang trang thiết lập hệ thống (chưa dựng) -->
+        <a href="#"><span class="ic">&#9881;</span> Thiết lập Hệ Thống</a>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <div class="avatar"></div>
+        <div>
+          <div class="name">Daiki S.</div>
+          <div class="role"><span class="status-dot"></span>ACTIVE</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <main class="admin-main">
+
+      <div class="admin-topbar">
+        <div class="admin-search">
+          <span class="ic">&#128269;</span>
+          <input type="text" placeholder="Mã đơn, tên khách, số điện thoại..." />
+        </div>
+        <div class="admin-topbar-actions">
+          <!-- TODO: xử lý xuất Excel thật (chưa dựng) -->
+          <a href="#" class="btn btn-outline">&#128190; Xuất Báo Cáo Excel</a>
+          <!-- TODO: mở modal nhận đặt bàn thủ công (chưa dựng) -->
+          <a href="#" class="btn btn-primary">+ Nhận Đặt Bàn Thủ Công</a>
+        </div>
+      </div>
+
+      <div class="page-heading">
+        <h1>Quản Lý Đơn &amp; Lịch Đặt Bàn</h1>
+        <p>Theo dõi tất cả đơn nhận khách, trạng thái xác nhận và luân chuyển bàn ngồi theo thời gian thực tại Sabi Omakase.</p>
+      </div>
+
+      <!-- ============ KPI ============ -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="label">Tổng đơn hôm nay</div>
+          <div class="value">36 khách</div>
+          <div class="delta up">&#8593; +100% khách online tuần &middot; 3 ca</div>
+        </div>
+        <div class="kpi-card">
+          <div class="label">Doanh thu dự kiến</div>
+          <div class="value">43.560.000đ</div>
+          <div class="delta">Chuyển khoản/Tiền mặt: Thẻ 75%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="label">Đơn chờ xác nhận</div>
+          <div class="value">04 đơn</div>
+          <div class="delta warn">Cần duyệt gấp trong 2 giờ tới</div>
+        </div>
+        <div class="kpi-card">
+          <div class="label">Bàn trống hiện tại</div>
+          <div class="value">07 khách</div>
+          <div class="delta">Hiện còn khu vực Lounge</div>
+        </div>
+      </div>
+
+      <!-- ============ NỘI DUNG: BẢNG + CHI TIẾT ĐƠN ============ -->
+      <div class="admin-content-split">
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Danh sách đơn</h2>
+            <div class="tabs">
+              <button class="active">Tất cả 38</button>
+              <button>Chờ xác nhận 8</button>
+              <button>Hôm nay</button>
+              <button>Tuần này</button>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Mã đơn</th>
+                  <th>Thượng khách &amp; liên hệ</th>
+                  <th>Set món / Bàn</th>
+                  <th>Thời gian</th>
+                  <th>Tổng tiền / Cọc</th>
+                  <th>Trạng thái</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background-color: var(--color-surface-2);">
+                  <td><strong>#KW-8813</strong></td>
+                  <td>
+                    <div class="customer-cell">
+                      <div class="avatar"></div>
+                      <div>
+                        <div class="name">Trần Đình Khang</div>
+                        <div class="meta">034.234.567</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Kiwami Grand Omakase<br /><span class="meta" style="color:var(--color-text-muted);font-size:11.5px;">2 khách &middot; Quầy bar chính</span></td>
+                  <td>18:00 hôm nay</td>
+                  <td>5.680.000đ<br /><span class="meta" style="color:var(--color-text-muted);font-size:11.5px;">Cọc 2.500.000đ</span></td>
+                  <td><span class="status-badge success">ĐÃ XÁC NHẬN</span></td>
+                  <td><!-- TODO: hiện panel chi tiết tương ứng (đã demo tĩnh bên phải) --><a href="#" class="btn btn-outline" style="padding:7px 12px;font-size:12px;">Chi Tiết Đơn</a></td>
+                </tr>
+                <tr>
+                  <td><strong>#WG-8812</strong></td>
+                  <td>
+                    <div class="customer-cell">
+                      <div class="avatar"></div>
+                      <div>
+                        <div class="name">Lê Hoàng Kiêm</div>
+                        <div class="meta">090.876.543</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Wagyu &amp; Otoro Special<br /><span class="meta" style="color:var(--color-text-muted);font-size:11.5px;">6 khách &middot; Phòng riêng</span></td>
+                  <td>20:00 hôm nay</td>
+                  <td>19.200.000đ<br /><span class="meta" style="color:var(--color-text-muted);font-size:11.5px;">Cọc 5.760.000đ</span></td>
+                  <td><span class="status-badge pending">CHỜ XÁC NHẬN</span></td>
+                  <td><a href="#" class="btn btn-outline" style="padding:7px 12px;font-size:12px;">Chi Tiết Đơn</a></td>
+                </tr>
+                <tr>
+                  <td><strong>#KS-8811</strong></td>
+                  <td>
+                    <div class="customer-cell">
+                      <div class="avatar"></div>
+                      <div>
+                        <div class="name">Nguyễn Chí Kiên</div>
+                        <div class="meta">098.111.222</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Set Miyabi Kaiseki Lunch<br /><span class="meta" style="color:var(--color-text-muted);font-size:11.5px;">4 khách &middot; VIP</span></td>
+                  <td>12:00 trưa mai</td>
+                  <td>11.200.000đ<br /><span class="meta" style="color:var(--color-text-muted);font-size:11.5px;">Miễn cọc &middot; VIP</span></td>
+                  <td><span class="status-badge success">ĐÃ XÁC NHẬN</span></td>
+                  <td><a href="#" class="btn btn-outline" style="padding:7px 12px;font-size:12px;">Chi Tiết Đơn</a></td>
+                </tr>
+                <tr>
+                  <td><strong>#SK-8810</strong></td>
+                  <td>
+                    <div class="customer-cell">
+                      <div class="avatar"></div>
+                      <div>
+                        <div class="name">Phạm Gia Bảo</div>
+                        <div class="meta">091.222.333</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Set Sakura Seasonal<br /><span class="meta" style="color:var(--color-text-muted);font-size:11.5px;">2 khách &middot; Bàn ngoài trời</span></td>
+                  <td>18:00 ngày mai</td>
+                  <td>4.700.000đ<br /><span class="meta" style="color:var(--color-text-muted);font-size:11.5px;">Đã hoàn cọc</span></td>
+                  <td><span class="status-badge danger">ĐÃ HỦY</span></td>
+                  <td><a href="#" class="btn btn-outline" style="padding:7px 12px;font-size:12px;">Chi Tiết Đơn</a></td>
+                </tr>
+                <tr>
+                  <td><strong>#NG-8809</strong></td>
+                  <td>
+                    <div class="customer-cell">
+                      <div class="avatar"></div>
+                      <div>
+                        <div class="name">Vũ Thùy Linh</div>
+                        <div class="meta">097.555.888</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Set Tsuki Nigiri<br /><span class="meta" style="color:var(--color-text-muted);font-size:11.5px;">1 khách &middot; Quầy bar</span></td>
+                  <td>13:00 hôm qua</td>
+                  <td>1.990.000đ<br /><span class="meta" style="color:var(--color-text-muted);font-size:11.5px;">Đã thanh toán đủ</span></td>
+                  <td><span class="status-badge neutral">ĐÃ HOÀN TẤT</span></td>
+                  <td><a href="#" class="btn btn-outline" style="padding:7px 12px;font-size:12px;">Chi Tiết Đơn</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <span class="active">1</span><span>2</span><span>3</span>
+          </div>
+        </section>
+
+        <!-- ============ PANEL CHI TIẾT ĐƠN (đang xem #KW-8813) ============ -->
+        <aside class="detail-panel">
+          <h3>Chi Tiết Đơn</h3>
+          <div class="order-code">#KW-8813 &middot; Trần Đình Khang</div>
+
+          <div class="detail-row"><span>Số điện thoại</span><span>034.234.567</span></div>
+          <div class="detail-row"><span>Email</span><span>khang.tran@sabi-patron.com</span></div>
+          <div class="detail-row"><span>Bàn</span><span>Bàn 04 (Riêng tư)</span></div>
+          <div class="detail-row"><span>Khu vực</span><span>Quầy Bar Chính</span></div>
+          <div class="detail-row"><span>Set món</span><span>Kiwami Grand Omakase</span></div>
+          <div class="detail-row"><span>Số khách</span><span>2 khách</span></div>
+          <div class="detail-row"><span>Thời gian</span><span>18:00 hôm nay</span></div>
+          <div class="detail-row"><span>Tổng tiền</span><span>5.680.000đ</span></div>
+          <div class="detail-row"><span>Đã cọc</span><span>2.500.000đ</span></div>
+
+          <div class="detail-note">
+            &#9888; Ghi chú dị ứng: Không dùng tôm/hải sản có vỏ.
+          </div>
+
+          <div class="detail-actions">
+            <!-- TODO: gắn xử lý xác nhận đơn thật (chưa dựng) -->
+            <a href="#" class="btn btn-primary btn-block">Xác Nhận Đơn</a>
+            <!-- TODO: gắn xử lý hủy đơn / yêu cầu cọc thêm (chưa dựng) -->
+            <a href="#" class="btn btn-outline btn-block">Hủy Đơn / Yêu Cầu Cọc Thêm</a>
+          </div>
+        </aside>
+
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>

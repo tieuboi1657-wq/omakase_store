@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Quản Lý Người Dùng & Hồ Sơ Thượng Khách</title>
+    
+    <!-- Link Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Link Font & Icon Google, FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&family=Noto+Serif:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Link file CSS của trang người dùng/admin -->
+    <link rel="stylesheet" href="css/style.css">
+    </head>
+<body class="admin-body">
+  <div class="admin-layout">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="admin-sidebar">
+      <div class="brand">
+        <span class="brand-mark">祥</span>
+        <span class="brand-text">SABI OMAKASE<small>ADMIN · PRIMARY</small></span>
+      </div>
+
+      <p class="admin-nav-label">Tổng quan</p>
+      <nav class="admin-nav">
+        <a href="thongke.html"><span class="ic">&#128202;</span> Dashboard &amp; Thống kê</a>
+      </nav>
+
+      <p class="admin-nav-label">Vận hành</p>
+      <nav class="admin-nav">
+        <a href="admin-don-dat-ban.html"><span class="ic">&#128197;</span> Quản lý Đơn &amp; Đặt bàn</a>
+        <!-- TODO: nối sang trang quản lý thực đơn (chưa dựng) -->
+        <a href="#"><span class="ic">&#127860;</span> Quản lý Thực Đơn &amp; Set</a>
+        <a href="admin-nguoi-dung.html" class="active"><span class="ic">&#128101;</span> Người Dùng &amp; Thượng Khách</a>
+      </nav>
+
+      <p class="admin-nav-label">Hệ thống</p>
+      <nav class="admin-nav">
+        <a href="doanhthu.html"><span class="ic">&#128200;</span> Báo cáo Doanh Thu</a>
+        <!-- TODO: nối sang trang thiết lập hệ thống (chưa dựng) -->
+        <a href="#"><span class="ic">&#9881;</span> Thiết lập Hệ Thống</a>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <div class="avatar"></div>
+        <div>
+          <div class="name">Daiki S.</div>
+          <div class="role"><span class="status-dot"></span>ACTIVE</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <main class="admin-main">
+
+      <div class="admin-topbar">
+        <div class="admin-search">
+          <span class="ic">&#128269;</span>
+          <input type="text" placeholder="Tìm tên, email, số điện thoại, mã hội viên..." />
+        </div>
+        <div class="admin-topbar-actions">
+          <select class="filter-select"><option>Vai trò: Tất cả</option><option>Thượng khách</option><option>Nhân viên</option></select>
+          <select class="filter-select"><option>Hạng: Tất cả</option><option>VIP</option><option>Vàng</option><option>Thành viên</option></select>
+          <select class="filter-select"><option>Trạng thái: Tất cả</option><option>Hoạt động</option><option>Chờ xác thực</option></select>
+        </div>
+      </div>
+
+      <div class="page-heading" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;">
+        <div>
+          <h1>Quản Lý Người Dùng &amp; Hồ Sơ Thượng Khách</h1>
+          <p>Theo dõi danh sách toàn bộ thượng khách, phân hạng thành viên và cấp quyền nhân sự vận hành nội bộ Sabi Omakase.</p>
+        </div>
+        <div class="admin-topbar-actions">
+          <!-- TODO: nối sang chức năng xuất báo cáo Excel (chưa dựng) -->
+          <a href="#" class="btn btn-outline">&#128190; Xuất Báo cáo</a>
+          <!-- TODO: mở modal Thêm tài khoản (chưa dựng) -->
+          <a href="#" class="btn btn-primary">+ Thêm Tài Khoản/Thượng Khách</a>
+        </div>
+      </div>
+
+      <!-- ============ KPI ============ -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="label">Tổng thành viên</div>
+          <div class="value">1.420</div>
+          <div class="delta up">&#8593; +12% so với tháng trước</div>
+        </div>
+        <div class="kpi-card">
+          <div class="label">Hạng Kurogane (Cao nhất)</div>
+          <div class="value">48 VIP</div>
+          <div class="delta">Chi tiêu TB 30.000.000đ/năm</div>
+        </div>
+        <div class="kpi-card">
+          <div class="label">Hạng Vàng (Gold)</div>
+          <div class="value">186</div>
+          <div class="delta">Thượng khách thân thiết</div>
+        </div>
+        <div class="kpi-card">
+          <div class="label">Nhân viên hệ thống</div>
+          <div class="value">18</div>
+          <div class="delta">Nhân viên đang hoạt động</div>
+        </div>
+      </div>
+
+      <!-- ============ BẢNG NGƯỜI DÙNG ============ -->
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Danh sách người dùng</h2>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Khách hàng</th>
+                <th>Mã hội viên &amp; loại</th>
+                <th>Hạng thành viên</th>
+                <th>Điểm tích lũy</th>
+                <th>Lần ghé gần nhất</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="customer-cell">
+                    <div class="avatar"></div>
+                    <div>
+                      <div class="name">Trần Đình Khang</div>
+                      <div class="meta">khang.tran@sabi-patron.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="tier-chip member">Thượng khách Thẻ Bạch Kim</span></td>
+                <td><span class="tier-chip vip">VIP</span></td>
+                <td>1.850 P</td>
+                <td>12/01/2025</td>
+                <td><span class="status-badge success">HOẠT ĐỘNG</span></td>
+                <td>
+                  <div class="row-actions">
+                    <!-- TODO: mở modal sửa thông tin (chưa dựng) -->
+                    <button class="icon-action" title="Sửa">&#9998;</button>
+                    <!-- TODO: xử lý xóa tài khoản (chưa dựng) -->
+                    <button class="icon-action" title="Xóa">&#128465;</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="customer-cell">
+                    <div class="avatar"></div>
+                    <div>
+                      <div class="name">Nguyễn Đăng Quang</div>
+                      <div class="meta">thuongkhach@omakase.vn</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="tier-chip member">Thượng khách VIP</span></td>
+                <td><span class="tier-chip vip">VIP</span></td>
+                <td>1.230 P</td>
+                <td>18/06/2025</td>
+                <td><span class="status-badge success">HOẠT ĐỘNG</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="icon-action" title="Sửa">&#9998;</button>
+                    <button class="icon-action" title="Xóa">&#128465;</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="customer-cell">
+                    <div class="avatar"></div>
+                    <div>
+                      <div class="name">Hoàng Mỹ Linh</div>
+                      <div class="meta">linh.hoang@gmail.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="tier-chip member">Thượng khách</span></td>
+                <td><span class="tier-chip gold">VÀNG</span></td>
+                <td>459 P</td>
+                <td>08/08/2025</td>
+                <td><span class="status-badge success">HOẠT ĐỘNG</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="icon-action" title="Sửa">&#9998;</button>
+                    <button class="icon-action" title="Xóa">&#128465;</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="customer-cell">
+                    <div class="avatar"></div>
+                    <div>
+                      <div class="name">Daiki Takahashi</div>
+                      <div class="meta">daiki.master@sabiomakase.vn</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="tier-chip staff">Nhân viên (Bếp trưởng)</span></td>
+                <td><span class="status-badge role">NHÂN VIÊN</span></td>
+                <td>&mdash;</td>
+                <td>01/01/2025</td>
+                <td><span class="status-badge success">HOẠT ĐỘNG</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="icon-action" title="Sửa">&#9998;</button>
+                    <button class="icon-action" title="Xóa">&#128465;</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="customer-cell">
+                    <div class="avatar"></div>
+                    <div>
+                      <div class="name">Kenji Sato</div>
+                      <div class="meta">sake.sato@sabiomakase.vn</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="tier-chip staff">Chuyên gia rượu Sake / Sommelier</span></td>
+                <td><span class="status-badge role">NHÂN VIÊN</span></td>
+                <td>&mdash;</td>
+                <td>12/03/2025</td>
+                <td><span class="status-badge success">HOẠT ĐỘNG</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="icon-action" title="Sửa">&#9998;</button>
+                    <button class="icon-action" title="Xóa">&#128465;</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="customer-cell">
+                    <div class="avatar"></div>
+                    <div>
+                      <div class="name">Lê Tuấn Anh</div>
+                      <div class="meta">tuananh.le@corp.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="tier-chip member">Chờ xác thực</span></td>
+                <td><span class="tier-chip member">Thành viên</span></td>
+                <td>0 P</td>
+                <td>14/10/2025</td>
+                <td><span class="status-badge pending">CHỜ XÁC THỰC</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="icon-action" title="Sửa">&#9998;</button>
+                    <button class="icon-action" title="Xóa">&#128465;</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- TODO: gắn logic phân trang thật (chưa dựng) -->
+        <div class="pagination">
+          <span class="active">1</span><span>2</span><span>3</span><span>…</span><span>237</span>
+        </div>
+      </section>
+
+      <!-- ============ GHI CHÚ KHẨU VỊ VIP ============ -->
+      <h2 style="font-size:15px;margin-top:8px;">Ghi Chú Khẩu Vị Đặc Biệt &amp; Thượng Khách VIP Gần Nhất</h2>
+      <div class="note-grid">
+        <div class="note-card">
+          <div class="who">
+            <div class="avatar"></div>
+            <div>
+              <div class="name" style="font-weight:600;">Trần Đình Khang</div>
+              <span class="status-badge success" style="font-size:9px;">VIP</span>
+            </div>
+          </div>
+          <p>&#128204; Đặt bàn tối nay 18:00 &middot; 2 người</p>
+          <p>&#9888; Kiêng: Không dùng Wasabi sống, dị ứng nhẹ hải sản có vỏ.</p>
+          <p>&#127863; Rượu ưa thích: Junmai Daiginjo lạnh 10°C, ly cỡ Arita men vảng.</p>
+        </div>
+        <div class="note-card">
+          <div class="who">
+            <div class="avatar"></div>
+            <div>
+              <div class="name" style="font-weight:600;">Nguyễn Đăng Quang</div>
+              <span class="status-badge success" style="font-size:9px;">VIP</span>
+            </div>
+          </div>
+          <p>&#128204; Phòng riêng Tokyo Room &middot; 20:00 &middot; 6 người</p>
+          <p>&#127863; Ưu tiên rượu vang đỏ nhẹ, không thêm mực nướng than.</p>
+          <p>&#128081; Sommelier phụ trách: Kenji Sato.</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>

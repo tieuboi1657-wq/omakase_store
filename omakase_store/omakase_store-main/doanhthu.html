@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Báo Cáo Doanh Thu & Hiệu Suất Ẩm Thực</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Serif:wght@400;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/doanhthu.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="brand">
+          <div class="brand-logo">寂</div>
+          <div class="brand-text">
+            <h2>SABI OMAKASE</h2>
+            <span>BẢNG QUẢN TRỊ NGHỆ NHÂN</span>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a class="nav-item" href="thongke.html">
+            <span class="material-symbols-outlined">analytics</span>
+            <span>Dashboard &amp; Thống Kê</span>
+          </a>
+          <a class="nav-item" href="admin-don-dat-ban.html">
+            <span class="material-symbols-outlined">table_restaurant</span>
+            <span>Quản Lý Đơn &amp; Đặt Bàn</span>
+          </a>
+          <a class="nav-item" href="#">
+            <span class="material-symbols-outlined">restaurant_menu</span>
+            <span>Quản Lý Thực Đơn &amp; Set</span>
+          </a>
+          <a class="nav-item" href="admin-nguoi-dung.html">
+            <span class="material-symbols-outlined">group</span>
+            <span>Người Dùng &amp; Thượng Khách</span>
+          </a>
+          <a class="nav-item active" href="doanhthu.html">
+            <span class="material-symbols-outlined">payments</span>
+            <span>Báo Cáo Doanh Thu</span>
+          </a>
+          <a class="nav-item" href="#">
+            <span class="material-symbols-outlined">settings</span>
+            <span>Thiết Lập Hệ Thống</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="user-box">
+        <div class="avatar">DS</div>
+        <div class="user-info">
+          <div class="user-row">
+            <strong>Daiki S.</strong>
+            <span class="status-badge">Active</span>
+          </div>
+          <small>admin@sabiomakase.vn</small>
+        </div>
+        <button class="icon-btn" title="Đăng xuất" onclick="location.href='login.html'">
+          <span class="material-symbols-outlined">logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="breadcrumb-wrap">
+          <div class="breadcrumb">
+            <span>Trang Chủ</span>
+            <span class="material-symbols-outlined">chevron_right</span>
+            <span class="current">Hệ Thống Quản Trị</span>
+          </div>
+
+          <div class="select-wrap">
+            <select aria-label="Chi nhánh">
+              <option>Tất cả chi nhánh</option>
+              <option>Chi nhánh Quận 1</option>
+              <option>Chi nhánh Quận 5</option>
+              <option>Chi nhánh Tây Hồ</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <button class="icon-btn notification" type="button">
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="dot"></span>
+          </button>
+
+          <button class="primary-btn" type="button" onclick="location.href='admin-don-dat-ban.html'">
+            <span class="material-symbols-outlined">add</span>
+            <span>Tạo Đơn Đặt Bàn</span>
+          </button>
+
+          <div class="mini-avatar">DS</div>
+        </div>
+      </header>
+
+      <main class="content">
+        <header class="page-header">
+          <div class="heading-block">
+            <div class="eyebrow">
+              <span>Tài Chính &amp; Omakase Metrics</span>
+              <span class="dot"></span>
+              <span>Nhật Ký Quý IV / 2024</span>
+            </div>
+
+            <h1>Báo Cáo Doanh Thu &amp; Hiệu Suất Ẩm Thực</h1>
+            <p>
+              Thống kê doanh số suất Omakase, doanh thu phụ trợ rượu Sake và phân tích chi phí nguyên liệu hải sản Toyosu.
+            </p>
+          </div>
+
+          <div class="filter-group">
+            <button class="secondary-btn">
+              <span class="material-symbols-outlined">calendar_month</span>
+              <span>Khoảng ngày: <strong>01/10/2024 - 31/10/2024</strong></span>
+            </button>
+
+            <button class="primary-btn">
+              <span class="material-symbols-outlined">download</span>
+              <span>Xuất Báo Cáo (PDF / XLSX)</span>
+            </button>
+          </div>
+        </header>
+
+        <div class="tab-row">
+          <div class="tab-group">
+            <button class="tab-btn">Hôm nay</button>
+            <button class="tab-btn">7 ngày qua</button>
+            <button class="tab-btn active">Tháng này</button>
+            <button class="tab-btn">Quý này</button>
+            <button class="tab-btn">Năm 2024</button>
+          </div>
+
+          <div class="meta-inline">
+            <span><i class="dot green"></i> Đồng bộ dữ liệu POS: 15 phút trước</span>
+            <span>|</span>
+            <span>Tỷ giá tham chiếu: 1 JPY = 166.2 VND</span>
+          </div>
+        </div>
+
+        <section class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-head">
+              <div>
+                <span class="label">Tổng Doanh Thu Tháng 10</span>
+                <div class="value-wrap">
+                  <strong>1.845.600.000</strong>
+                  <span>₫</span>
+                </div>
+              </div>
+              <div class="icon-box primary">
+                <span class="material-symbols-outlined">account_balance_wallet</span>
+              </div>
+            </div>
+            <div class="stat-foot">
+              <span class="trend up">↗ +18.4%</span>
+              <span>so với Tháng 9</span>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-head">
+              <div>
+                <span class="label">Giá Trị Trung Bình / Suất</span>
+                <div class="value-wrap">
+                  <strong>3.250.000</strong>
+                  <span>₫/khách</span>
+                </div>
+              </div>
+              <div class="icon-box secondary">
+                <span class="material-symbols-outlined">room_service</span>
+              </div>
+            </div>
+            <div class="stat-foot">
+              <span class="trend up">↗ +6.2%</span>
+              <span>so với kỳ trước</span>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-head">
+              <div>
+                <span class="label">Doanh Thu Rượu Sake Tuyển</span>
+                <div class="value-wrap">
+                  <strong>428.000.000</strong>
+                  <span>₫</span>
+                </div>
+              </div>
+              <div class="icon-box tertiary">
+                <span class="material-symbols-outlined">liquor</span>
+              </div>
+            </div>
+            <div class="stat-foot">
+              <span class="trend up">↗ +12.8%</span>
+              <span>Juyondai &amp; Dassai 23</span>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-head">
+              <div>
+                <span class="label">Tỷ Lệ Lấp Đầy Ghế Bar</span>
+                <div class="value-wrap">
+                  <strong>94.6%</strong>
+                </div>
+              </div>
+              <div class="icon-box warning">
+                <span class="material-symbols-outlined">chair_alt</span>
+              </div>
+            </div>
+            <div class="stat-foot">
+              <span>568 / 600 lượt đặt chỗ</span>
+              <span class="status-badge success">Tối ưu</span>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel-grid">
+          <div class="panel big-panel">
+            <div class="panel-header">
+              <div>
+                <span class="small-label">Biến động doanh thu theo tuần</span>
+                <h2>Doanh Thu Theo Tuần</h2>
+              </div>
+
+              <div class="legend-inline">
+                <span><i class="dot red"></i> Suất Omakase</span>
+                <span><i class="dot blue"></i> Rượu Sake</span>
+                <span><i class="dot dashed"></i> Mục tiêu</span>
+              </div>
+            </div>
+
+            <div class="chart-wrap">
+              <svg viewBox="0 0 600 240" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="gradPrimary" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#8c2f2f" stop-opacity="0.45" />
+                    <stop offset="100%" stop-color="#8c2f2f" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+
+                <line x1="0" x2="600" y1="20" y2="20" stroke="#353535" stroke-dasharray="3 3" />
+                <line x1="0" x2="600" y1="75" y2="75" stroke="#353535" stroke-dasharray="3 3" />
+                <line x1="0" x2="600" y1="130" y2="130" stroke="#353535" stroke-dasharray="3 3" />
+                <line x1="0" x2="600" y1="185" y2="185" stroke="#353535" stroke-dasharray="3 3" />
+                <line x1="0" x2="600" y1="230" y2="230" stroke="#564241" />
+
+                <line x1="0" x2="600" y1="65" y2="65" stroke="#a48b89" stroke-dasharray="6 4" stroke-width="1.5" opacity="0.6" />
+
+                <rect x="55" y="150" width="34" height="80" fill="#5d4434" opacity="0.85" rx="2" />
+                <rect x="195" y="135" width="34" height="95" fill="#5d4434" opacity="0.85" rx="2" />
+                <rect x="335" y="115" width="34" height="115" fill="#e3bfaa" opacity="0.9" rx="2" />
+                <rect x="475" y="125" width="34" height="105" fill="#5d4434" opacity="0.85" rx="2" />
+
+                <path d="M72 130 Q150 95 212 90 T352 42 T492 58 L492 230 L72 230 Z" fill="url(#gradPrimary)"></path>
+                <path d="M72 130 Q150 95 212 90 T352 42 T492 58" fill="none" stroke="#ffb3af" stroke-width="2.5"></path>
+
+                <circle cx="72" cy="130" r="4" fill="#8c2f2f" stroke="#ffb3af" stroke-width="2"></circle>
+                <circle cx="212" cy="90" r="4" fill="#8c2f2f" stroke="#ffb3af" stroke-width="2"></circle>
+                <circle cx="352" cy="42" r="6" fill="#8c2f2f" stroke="#f5f1e8" stroke-width="2.5"></circle>
+                <circle cx="492" cy="58" r="4" fill="#8c2f2f" stroke="#ffb3af" stroke-width="2"></circle>
+              </svg>
+
+              <div class="chart-tooltip">
+                <div class="tooltip-label">Tuần 3 (Đỉnh điểm)</div>
+                <div class="tooltip-value">512.400.000 ₫</div>
+                <div class="tooltip-sub">148 suất ẩm thực • Sake: 122M ₫</div>
+              </div>
+            </div>
+
+            <div class="chart-grid">
+              <div>
+                <span class="strong">Tuần 1</span>
+                <small>378.000.000 ₫</small>
+              </div>
+              <div>
+                <span class="strong">Tuần 2</span>
+                <small>432.200.000 ₫</small>
+              </div>
+              <div class="peak">
+                <span class="strong">Tuần 3 ★</span>
+                <small>512.400.000 ₫</small>
+              </div>
+              <div>
+                <span class="strong">Tuần 4</span>
+                <small>523.000.000 ₫</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <span class="small-label">Cơ cấu doanh thu</span>
+                <h2>Phân Bổ</h2>
+              </div>
+            </div>
+
+            <div class="donut-block">
+              <div class="donut">
+                <div class="donut-center">
+                  <span>100% Tổng</span>
+                  <strong>1.845 Tỷ</strong>
+                  <small>VND Ghi Nhận</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="donut-legend">
+              <div class="legend-row">
+                <div class="legend-left">
+                  <i class="dot red"></i>
+                  <span>Kiwami &amp; Omakase cao cấp</span>
+                </div>
+                <div class="legend-right">
+                  <strong>959.7M ₫</strong>
+                  <small>(52%)</small>
+                </div>
+              </div>
+
+              <div class="legend-row">
+                <div class="legend-left">
+                  <i class="dot blue"></i>
+                  <span>Kaiseki &amp; Seasonal Sets</span>
+                </div>
+                <div class="legend-right">
+                  <strong>442.9M ₫</strong>
+                  <small>(24%)</small>
+                </div>
+              </div>
+
+              <div class="legend-row">
+                <div class="legend-left">
+                  <i class="dot sand"></i>
+                  <span>Rượu Sake Tuyển &amp; Trà đạo</span>
+                </div>
+                <div class="legend-right">
+                  <strong>332.2M ₫</strong>
+                  <small>(18%)</small>
+                </div>
+              </div>
+
+              <div class="legend-row">
+                <div class="legend-left">
+                  <i class="dot gray"></i>
+                  <span>Món gọi thêm &amp; Phụ thu</span>
+                </div>
+                <div class="legend-right">
+                  <strong>110.8M ₫</strong>
+                  <small>(6%)</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="bottom-grid">
+          <div class="panel table-panel">
+            <div class="table-top">
+              <div>
+                <span class="small-label">Top bán chạy</span>
+                <h2>Set Omakase Bán Chạy</h2>
+              </div>
+              <button class="text-link" type="button">
+                Xem Toàn Bộ Menu
+                <span class="material-symbols-outlined">chevron_right</span>
+              </button>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Hạng</th>
+                  <th>Tên Set</th>
+                  <th class="center">Lượt phục vụ</th>
+                  <th class="right">Đơn giá</th>
+                  <th class="right">Doanh thu</th>
+                  <th class="right">Tỷ trọng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="rank red">01</td>
+                  <td>
+                    <div class="product-name">Set Kiwami Grand Omakase</div>
+                    <small>18 món nghệ nhân • Uni &amp; Bào ngư đen</small>
+                  </td>
+                  <td class="center">215 lượt</td>
+                  <td class="right">3.800.000 ₫</td>
+                  <td class="right">817.000.000 ₫</td>
+                  <td class="right"><span class="pill red">44.3%</span></td>
+                </tr>
+
+                <tr>
+                  <td class="rank blue">02</td>
+                  <td>
+                    <div class="product-name">Set Wagyu &amp; Otoro Prestige</div>
+                    <small>20 món thượng hạng • Bò Miyazaki A5</small>
+                  </td>
+                  <td class="center">98 lượt</td>
+                  <td class="right">4.800.000 ₫</td>
+                  <td class="right">470.400.000 ₫</td>
+                  <td class="right"><span class="pill blue">25.5%</span></td>
+                </tr>
+
+                <tr>
+                  <td class="rank gray">03</td>
+                  <td>
+                    <div class="product-name">Set Miyabi Kaiseki</div>
+                    <small>14 món truyền thống Kyoto</small>
+                  </td>
+                  <td class="center">84 lượt</td>
+                  <td class="right">2.800.000 ₫</td>
+                  <td class="right">235.200.000 ₫</td>
+                  <td class="right"><span class="pill gray">12.7%</span></td>
+                </tr>
+
+                <tr>
+                  <td class="rank gray">04</td>
+                  <td>
+                    <div class="product-name">Set Sakura Seasonal</div>
+                    <small>16 món theo luồng hải sản thu</small>
+                  </td>
+                  <td class="center">65 lượt</td>
+                  <td class="right">3.200.000 ₫</td>
+                  <td class="right">208.000.000 ₫</td>
+                  <td class="right"><span class="pill gray">11.3%</span></td>
+                </tr>
+
+                <tr>
+                  <td class="rank gray">05</td>
+                  <td>
+                    <div class="product-name">Set Akami Edomae</div>
+                    <small>12 món sushi ngâm tương cổ điển</small>
+                  </td>
+                  <td class="center">58 lượt</td>
+                  <td class="right">2.600.000 ₫</td>
+                  <td class="right">150.800.000 ₫</td>
+                  <td class="right"><span class="pill gray">8.2%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="side-stack">
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <span class="small-label">Hiệu suất theo chi nhánh</span>
+                  <h2>Doanh Số &amp; Công Suất</h2>
+                </div>
+                <span class="material-symbols-outlined">domain</span>
+              </div>
+
+              <div class="progress-list">
+                <div class="progress-item">
+                  <div class="line-top">
+                    <span>Chi nhánh Quận 1</span>
+                    <strong>890.000.000 ₫</strong>
+                  </div>
+                  <div class="bar"><span style="width: 98%"></span></div>
+                  <div class="line-bottom">
+                    <small>Công suất: 98%</small>
+                    <small>240 lượt phục vụ</small>
+                  </div>
+                </div>
+
+                <div class="progress-item">
+                  <div class="line-top">
+                    <span>Chi nhánh Tây Hồ</span>
+                    <strong>565.000.000 ₫</strong>
+                  </div>
+                  <div class="bar"><span class="blue" style="width: 92%"></span></div>
+                  <div class="line-bottom">
+                    <small>Công suất: 92%</small>
+                    <small>182 lượt phục vụ</small>
+                  </div>
+                </div>
+
+                <div class="progress-item">
+                  <div class="line-top">
+                    <span>Chi nhánh Quận 5</span>
+                    <strong>390.600.000 ₫</strong>
+                  </div>
+                  <div class="bar"><span class="gray" style="width: 88%"></span></div>
+                  <div class="line-bottom">
+                    <small>Công suất: 88%</small>
+                    <small>146 lượt phục vụ</small>
+                  </div>
+                </div>
+              </div>
+
+              <button class="ghost-btn" type="button">
+                <span class="material-symbols-outlined">tune</span>
+                <span>Điều phối chỗ ngồi</span>
+              </button>
+            </div>
+
+            <div class="panel highlight-panel">
+              <div class="mini-card">
+                <div class="mini-icon">
+                  <span class="material-symbols-outlined">flight_takeoff</span>
+                </div>
+                <div>
+                  <h3>Chi Phí Hải Sản Chợ Toyosu</h3>
+                  <p>Chuyến nhập khẩu tươi sống 3 chuyến/tuần</p>
+                </div>
+              </div>
+
+              <button class="inline-btn" type="button">
+                <span>Xem Chi Tiết</span>
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

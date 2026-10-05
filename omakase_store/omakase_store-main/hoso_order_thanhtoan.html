@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SABI OMAKASE - Website bán hàng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap&subset=vietnamese" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Arial,Helvetica,sans-serif;background:#090909;color:#eee;line-height:1.5}button,input{font:inherit}button{cursor:pointer}.page{min-height:100vh;padding:18px}.shell{width:min(1280px,100%);margin:auto;background:#151515;box-shadow:0 20px 70px #000;overflow:hidden}.hero{min-height:590px;position:relative;background:linear-gradient(90deg,rgba(0,0,0,.15),rgba(0,0,0,.65)),url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1600&q=85') center/cover}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent 60%)}.brand{position:relative;z-index:2;padding:28px 34px;display:flex;justify-content:space-between;align-items:center;letter-spacing:3px;font-size:12px}.logo{display:flex;gap:12px;align-items:center}.logo-badge{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#bd1e1e;font-size:21px}.hero-text{position:absolute;z-index:2;left:38px;right:38px;bottom:35px}.quote{font-family:Arial,sans-serif;font-size:28px;font-style:italic;max-width:560px}.line{width:40px;height:1px;background:#d2b36a;margin:20px 0 9px}.small{color:#c9b789;letter-spacing:3px;font-size:11px}.features{display:flex;gap:25px;margin-top:22px;color:#ccc;font-size:12px}.nav{display:flex;gap:10px;padding:14px 24px;background:#101010;border-top:1px solid #292929;border-bottom:1px solid #292929;position:sticky;top:0;z-index:10}.nav button{background:transparent;color:#aaa;border:1px solid transparent;padding:10px 14px}.nav button:hover,.nav button.active{color:#fff;border-color:#6f2929;background:#1b1b1b}.content{padding:42px}.section{display:none}.section.active{display:block}.top{display:flex;justify-content:space-between;align-items:center;color:#aaa;font-size:12px;letter-spacing:2px}.top strong{color:#c92727;font-size:18px}.title{margin-top:18px}.title h1{font-family:Arial,sans-serif;font-size:40px;font-weight:400;margin-bottom:8px}.title p{color:#999}.divider{height:1px;background:#333;margin:25px 0}.products{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{background:#202020;border:1px solid #2e2e2e;padding:12px;transition:.2s}.card:hover{transform:translateY(-3px);border-color:#6f2929}.card img{width:100%;height:155px;object-fit:cover}.card h3{font-size:15px;margin:10px 0 4px}.card p{font-size:12px;color:#888;height:38px}.price{display:flex;justify-content:space-between;align-items:center;margin-top:10px}.price b{color:#d8b77a}.add,.primary{background:#b91e1e;color:#fff;border:0;padding:9px 12px}.add:hover,.primary:hover{background:#db2b2b}.layout{display:grid;grid-template-columns:1.7fr 1fr;gap:25px}.panel{background:#1c1c1c;border:1px solid #303030;padding:22px}.panel h2{font-family:Arial,sans-serif;font-weight:400;margin-bottom:17px}.cart-table{width:100%;border-collapse:collapse}.cart-table th,.cart-table td{text-align:left;padding:13px 8px;border-bottom:1px solid #333;font-size:13px}.cart-table th{color:#aaa;font-weight:400}.qty{display:flex;align-items:center;gap:8px}.qty button{width:27px;height:27px;border:1px solid #555;background:#111;color:#fff}.remove{background:none;border:0;color:#c65b5b}.summary-row{display:flex;justify-content:space-between;margin:11px 0;color:#aaa}.summary-row.total{font-size:19px;color:#fff;border-top:1px solid #333;padding-top:15px}.summary-row.total b{color:#d8b77a}.actions{display:flex;gap:10px;margin-top:20px}.secondary{background:#2a2a2a;color:#ddd;border:1px solid #444;padding:12px 15px}.full{width:100%}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:13px}.field label{display:block;color:#aaa;font-size:12px;letter-spacing:1px;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;background:#101010;border:1px solid #3a3a3a;color:#fff;padding:11px;outline:none}.field textarea{min-height:80px;resize:vertical}.profile{display:grid;grid-template-columns:260px 1fr;gap:25px}.avatar-box{text-align:center}.avatar{width:100px;height:100px;border-radius:50%;margin:5px auto 15px;background:#b91e1e;display:grid;place-items:center;font-size:38px}.profile-menu{border-top:1px solid #333;margin-top:20px}.profile-menu button{width:100%;padding:13px;text-align:left;background:transparent;color:#aaa;border:0;border-bottom:1px solid #2d2d2d}.profile-menu button:hover{color:#fff;background:#242424}.history-card{border:1px solid #333;background:#1b1b1b;margin-bottom:15px;padding:18px}.history-head{display:flex;justify-content:space-between;margin-bottom:14px}.status{color:#9dcc83}.history-table{width:100%;border-collapse:collapse}.history-table th,.history-table td{padding:8px;border-bottom:1px solid #303030;text-align:left;font-size:13px}.payment{margin-top:18px}.radio{display:flex;gap:10px;align-items:center;margin:10px 0;color:#ccc}.notice{background:#211d14;border:1px solid #4a3d24;color:#d8b77a;padding:12px;margin-bottom:15px;font-size:13px}.booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}.booking-types{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}.booking-types button{background:#111;border:1px solid #444;color:#aaa;padding:9px 12px}.booking-types button.active{border-color:#b91e1e;color:#fff;background:#271414}.toast{position:fixed;right:20px;bottom:20px;background:#c32222;color:#fff;padding:12px 18px;opacity:0;transform:translateY(20px);transition:.3s;z-index:50}.toast.show{opacity:1;transform:none}.empty{color:#777;padding:20px;text-align:center}.footer{padding:25px 42px;background:#101010;border-top:1px solid #2a2a2a;color:#777;text-align:center;font-size:12px}
+/* Tự động mở bảng chọn Ngày / Giờ khi click vào ô */
+input[type="date"], input[type="time"] { cursor: pointer; color-scheme: dark; }
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.8);
+}
+@media(max-width:900px){.products{grid-template-columns:repeat(2,1fr)}.layout,.booking-grid,.profile{grid-template-columns:1fr}.hero{min-height:480px}.content{padding:25px}.nav{overflow:auto}.nav button{white-space:nowrap}}
+@media(max-width:520px){.page{padding:0}.products{grid-template-columns:1fr}.brand{padding:20px}.brand>span{display:none}.hero-text{left:24px}.quote{font-size:22px}.content{padding:18px}.form-grid{grid-template-columns:1fr}.cart-table th:nth-child(2),.cart-table td:nth-child(2){display:none}.actions{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="page"><main class="shell">
+<section class="hero">
+  <div class="brand"><div class="logo"><span class="logo-badge">侘</span><span>OMAKASE CEREMONY</span></div><span>EST. 2018 · TOKYO / SAIGON</span></div>
+  <div class="hero-text"><div class="quote">“Thưởng thức Omakase là trao gửi niềm tin trọn vẹn cho nghệ nhân.”</div><div class="line"></div><div class="small">TRIẾT LÝ WABI-SABI</div><div class="features"><span>▦ Chỉ 10 chỗ ngồi / lượt</span><span>◉ Hải sản tươi từ Toyosu</span></div></div>
+</section>
+<nav class="nav">
+<button class="active" onclick="showSection('shop',this)">Sản phẩm</button>
+<button onclick="showSection('cartSection',this)">Đặt chỗ / Giỏ hàng <span id="navCount">(0)</span></button>
+<button onclick="showSection('booking',this)">Đặt dịch vụ</button>
+<button onclick="showSection('profile',this)">Tài khoản</button>
+<button onclick="showSection('history',this)">Lịch sử đơn hàng</button><button style="margin-left:auto" onclick="location.href='index.html'">← Trang chủ</button><button onclick="location.href='menu.html'">Thực đơn Omakase</button>
+</nav>
+<div class="content">
+<section id="shop" class="section active">
+<div class="top"><span><strong>侘寂</strong> &nbsp; SABI OMAKASE</span><span>MENU / 2026</span></div>
+<div class="title"><h1>Thực đơn hôm nay</h1><p>Chọn món Omakase tinh tuyển và thêm vào giỏ hàng.</p></div><div class="divider"></div>
+<div class="products" id="products"></div>
+</section>
+
+<section id="cartSection" class="section">
+<div class="title"><h1>Đặt chỗ / Giỏ hàng</h1><p>Kiểm tra sản phẩm, số lượng, phí vận chuyển và tổng tiền.</p></div><div class="divider"></div>
+<div class="layout"><div class="panel"><h2>Giỏ hàng</h2><table class="cart-table"><thead><tr><th>Sản phẩm</th><th>Đơn giá</th><th>Số lượng</th><th>Thành tiền</th><th></th></tr></thead><tbody id="cartBody"></tbody></table></div>
+<div class="panel"><h2>Tóm tắt đơn hàng</h2><div class="summary-row"><span>Tạm tính</span><b id="subtotal">0 ₫</b></div><div class="summary-row"><span>Phí vận chuyển</span><b id="shipping">0 ₫</b></div><div class="summary-row total"><span>Tổng tiền</span><b id="grandTotal">0 ₫</b></div><div class="actions"><button class="secondary" onclick="showSection('shop',document.querySelector('.nav button'))">← Tiếp tục mua hàng</button><button class="primary full" onclick="goPayment()">Thanh toán →</button></div></div></div>
+</section>
+
+<section id="booking" class="section">
+<div class="title"><h1>Thông tin đặt dịch vụ</h1><p>Form này có thể dùng cho vé máy bay, vé tàu, vé xe, khách sạn, phòng khám, sân thể thao, spa hoặc tour du lịch.</p></div><div class="divider"></div>
+<div class="booking-types"><button class="active" onclick="selectType(this,'Sushi Omakase')">Omakase</button><button onclick="selectType(this,'Khách sạn')">Khách sạn</button><button onclick="selectType(this,'Spa')">Spa</button><button onclick="selectType(this,'Tour du lịch')">Tour</button><button onclick="selectType(this,'Vé xe')">Vé xe</button><button onclick="selectType(this,'Phòng khám')">Phòng khám</button></div>
+<div class="booking-grid"><div class="panel"><h2 id="bookingType">Sushi Omakase</h2><div class="form-grid"><div class="field"><label>Ngày</label><input id="bookDate" type="date"></div><div class="field"><label>Thời gian</label><input id="bookTime" type="time"></div></div><div class="field"><label>Số lượng</label><input id="bookQty" type="number" min="0" value="0"></div><div class="field"><label>Ghi chú</label><textarea id="bookNote" placeholder="Yêu cầu thêm nếu có..."></textarea></div></div>
+<div class="panel"><h2>Thông tin khách hàng</h2><div class="field"><label>Họ tên</label><input id="bookName" placeholder="Nguyễn Văn A"></div><div class="field"><label>Điện thoại</label><input id="bookPhone" placeholder="09xxxxxxxx"></div><div class="field"><label>Email</label><input id="bookEmail" type="email" placeholder="email@example.com"></div><div class="summary-row total"><span>Tổng tiền</span><b id="bookingTotal">0 ₫</b></div><button class="primary full" onclick="confirmBooking()">Xác nhận đặt</button></div></div>
+</section>
+
+<section id="profile" class="section">
+<div class="title"><h1>Tài khoản</h1><p>Thông tin tài khoản sau khi đăng nhập.</p></div><div class="divider"></div>
+<div class="profile"><div class="panel avatar-box"><div class="avatar">NA</div><h2>Nguyễn Văn A</h2><p style="color:#888">nguyenvana@email.com</p><div class="profile-menu"><button onclick="profileAlert('Thông tin cá nhân')">Thông tin cá nhân</button><button onclick="showSection('history',document.querySelectorAll('.nav button')[4])">Đơn hàng</button><button onclick="showSection('history',document.querySelectorAll('.nav button')[4])">Lịch sử đặt dịch vụ</button><button onclick="profileAlert('Danh sách yêu thích')">Yêu thích</button><button onclick="profileAlert('Đổi mật khẩu')">Đổi mật khẩu</button><button onclick="location.href='login.html'">Đăng xuất</button></div></div>
+<div class="panel"><h2>Thông tin cá nhân</h2><div class="form-grid"><div class="field"><label>Họ tên</label><input value="Nguyễn Văn A"></div><div class="field"><label>Số điện thoại</label><input value="012345678"></div><div class="field"><label>Email</label><input value="nguyenvana@email.com"></div><div class="field"><label>Địa chỉ</label><input value="TP. Hồ Chí Minh"></div></div><button class="primary" onclick="saveProfile()">Lưu thông tin</button></div></div>
+</section>
+
+<section id="history" class="section">
+<div class="title"><h1>Lịch sử đơn hàng</h1><p>Lịch sử đơn hàng và thông tin thanh toán.</p></div><div class="divider"></div><div id="historyList"></div>
+</section>
+
+<section id="payment" class="section">
+<div class="title"><h1>Xác nhận thanh toán</h1><p>Kiểm tra thông tin khách hàng và chọn phương thức thanh toán.</p></div><div class="divider"></div>
+<div class="layout"><div class="panel"><h2>THÔNG TIN KHÁCH HÀNG</h2><div class="field"><label>Họ tên</label><input id="payName" value="Nguyễn Văn A"></div><div class="field"><label>Địa chỉ</label><input id="payAddress" value="TP. Hồ Chí Minh"></div><div class="field"><label>SĐT</label><input id="payPhone" value="0901234567"></div></div>
+<div class="panel"><h2>PHƯƠNG THỨC THANH TOÁN</h2><label class="radio"><input type="radio" name="payment" value="COD" checked> COD</label><label class="radio"><input type="radio" name="payment" value="Banking"> Banking</label><label class="radio"><input type="radio" name="payment" value="E-wallet"> E-wallet</label><div class="summary-row total"><span>Tổng tiền</span><b id="payTotal">0 ₫</b></div><button class="primary full" onclick="confirmPayment()">Xác nhận thanh toán</button></div></div>
+</section>
+</div><footer class="footer">SABI OMAKASE · Website bán hàng demo · Booking / Cart · User Profile · Order History</footer>
+</main></div><div class="toast" id="toast">Đã cập nhật!</div>
+<script>
+const products=[
+{name:'Salmon Omakase',desc:'Cá hồi Na Uy, cơm sushi, ikura',price:320000,img:'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=700&q=80'},
+{name:'Sushi Premium',desc:'Set 8 miếng nigiri tuyển chọn',price:480000,img:'https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=700&q=80'},
+{name:'Sashimi Set',desc:'Cá hồi, cá ngừ, cá trắng tươi',price:550000,img:'https://images.unsplash.com/photo-1534482421-64566f976cfa?auto=format&fit=crop&w=700&q=80'},
+{name:'Wagyu Don',desc:'Wagyu A5, trứng onsen, cơm Nhật',price:390000,img:'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=700&q=80'}
+];
+let cart=[];let history=[];let bookingType='Sushi Omakase';const money=n=>n.toLocaleString('vi-VN')+' ₫';
+function showSection(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');if(id==='cartSection')renderCart();if(id==='history')renderHistory();if(id==='payment'){document.getElementById('payTotal').textContent=money(calcTotal())}window.scrollTo({top:document.querySelector('.nav').offsetTop-5,behavior:'smooth'})}
+function renderProducts(){document.getElementById('products').innerHTML=products.map((p,i)=>`<article class="card"><img src="${p.img}" alt="${p.name}"><h3>${p.name}</h3><p>${p.desc}</p><div class="price"><b>${money(p.price)}</b><button class="add" onclick="add(${i})">+ Thêm</button></div></article>`).join('')}
+function add(i){const found=cart.find(x=>x.name===products[i].name);if(found)found.qty++;else cart.push({...products[i],qty:1});renderCart();toast('Đã thêm vào giỏ hàng!')}
+function changeQty(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);renderCart()}
+function removeItem(i){cart.splice(i,1);renderCart()}
+function calcSubtotal(){return cart.reduce((s,p)=>s+p.price*p.qty,0)}function calcShipping(){const sub=calcSubtotal();return sub===0?0:(sub>=1000000?0:30000)}function calcTotal(){return calcSubtotal()+calcShipping()}
+function renderCart(){const body=document.getElementById('cartBody');document.getElementById('navCount').textContent='('+cart.reduce((s,p)=>s+p.qty,0)+')';document.getElementById('subtotal').textContent=money(calcSubtotal());document.getElementById('shipping').textContent=money(calcShipping());document.getElementById('grandTotal').textContent=money(calcTotal());if(!cart.length){body.innerHTML='<tr><td colspan="5" class="empty">Giỏ hàng đang trống. Hãy chọn sản phẩm.</td></tr>';return}body.innerHTML=cart.map((p,i)=>`<tr><td><b>${p.name}</b><br><small style="color:#777">${p.desc}</small></td><td>${money(p.price)}</td><td><div class="qty"><button onclick="changeQty(${i},-1)">−</button><span>${p.qty}</span><button onclick="changeQty(${i},1)">+</button></div></td><td>${money(p.price*p.qty)}</td><td><button class="remove" onclick="removeItem(${i})">Xóa</button></td></tr>`).join('')}
+function goPayment(){if(!cart.length){alert('Bạn chưa có sản phẩm trong giỏ hàng!');return}showSection('payment',document.querySelectorAll('.nav button')[1])}
+function confirmPayment(){if(!cart.length){alert('Giỏ hàng trống!');return}const method=document.querySelector('input[name="payment"]:checked').value;history.unshift({type:'Đơn hàng',date:new Date().toLocaleDateString('vi-VN'),items:cart.map(p=>({name:p.name,qty:p.qty,total:p.price*p.qty})),total:calcTotal(),customer:{name:document.getElementById('payName').value,address:document.getElementById('payAddress').value,phone:document.getElementById('payPhone').value},payment:method,status:'Đã xác nhận'});cart=[];renderCart();renderHistory();toast('Thanh toán thành công!');showSection('history',document.querySelectorAll('.nav button')[4])}
+function selectType(btn,type){document.querySelectorAll('.booking-types button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');bookingType=type;document.getElementById('bookingType').textContent=type;const qty=Number(document.getElementById('bookQty').value)||0;const priceEach=(type==='Sushi Omakase'?480000:250000);document.getElementById('bookingTotal').textContent=money(priceEach*qty)}
+function confirmBooking(){const name=document.getElementById('bookName').value.trim();const phone=document.getElementById('bookPhone').value.trim();if(!name||!phone){alert('Vui lòng nhập Họ tên và Điện thoại!');return}const qty=Number(document.getElementById('bookQty').value)||1;const total=(bookingType==='Sushi Omakase'?480000:250000)*qty;history.unshift({type:'Đặt dịch vụ - '+bookingType,date:document.getElementById('bookDate').value||new Date().toLocaleDateString('vi-VN'),items:[{name:bookingType,qty,total}],total,customer:{name,address:'Chưa cung cấp',phone},payment:'Chưa thanh toán',status:'Đã đặt'});renderHistory();toast('Xác nhận đặt dịch vụ thành công!');showSection('history',document.querySelectorAll('.nav button')[4])}
+function renderHistory(){const el=document.getElementById('historyList');if(!history.length){el.innerHTML='<div class="panel empty">Chưa có đơn hàng hoặc lịch sử đặt dịch vụ.</div>';return}el.innerHTML=history.map((o,idx)=>`<div class="history-card"><div class="history-head"><b>${o.type} · ${o.date}</b><span class="status">${o.status}</span></div><h3>THÔNG TIN ĐƠN HÀNG</h3><table class="history-table"><thead><tr><th>Sản phẩm</th><th>Số lượng</th><th>Tổng tiền</th></tr></thead><tbody>${o.items.map(x=>`<tr><td>${x.name}</td><td>${x.qty}</td><td>${money(x.total)}</td></tr>`).join('')}</tbody></table><h3 style="margin-top:18px">THÔNG TIN KHÁCH HÀNG</h3><p>Họ tên: ${o.customer.name}</p><p>Địa chỉ: ${o.customer.address}</p><p>SĐT: ${o.customer.phone}</p><h3 style="margin-top:18px">PHƯƠNG THỨC THANH TOÁN</h3><p>○ ${o.payment}</p><div class="summary-row total"><span>Tổng tiền</span><b>${money(o.total)}</b></div>${o.payment==='Chưa thanh toán'?`<button class="primary" onclick="payHistory(${idx})">Xác nhận thanh toán</button>`:''}</div>`).join('')}
+function payHistory(i){const o=history[i];o.payment='COD';o.status='Đã thanh toán';renderHistory();toast('Đã xác nhận thanh toán!')}
+function profileAlert(msg){toast(msg+' - chức năng demo')};function saveProfile(){toast('Đã lưu thông tin cá nhân!')};function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+renderProducts();renderCart();renderHistory();
+(function(){const q=new URLSearchParams(location.search);const nav=document.querySelectorAll('.nav button');
+ const map={shop:['shop',0],cart:['cartSection',1],booking:['booking',2],profile:['profile',3],history:['history',4]};
+ let v=q.get('view');
+ if(q.get('name')&&q.get('price')){cart.push({name:q.get('name'),desc:'Set Omakase Sabi',price:parseInt(q.get('price'))||0,qty:Math.max(1,parseInt(q.get('qty'))||1)});renderCart();v=v||'cart';}
+ if(q.get('date'))document.getElementById('bookDate').value=q.get('date');
+ if(q.get('qty')&&!q.get('name'))document.getElementById('bookQty').value=q.get('qty');
+ if(v&&map[v])showSection(map[v][0],nav[map[v][1]]);})();
+// Tự động cập nhật tổng tiền khi gõ/thay đổi Số lượng
+document.getElementById('bookQty')?.addEventListener('input', function(){
+    const qty = Number(this.value) || 0;
+    const priceEach = (bookingType === 'Sushi Omakase' ? 480000 : 250000);
+    document.getElementById('bookingTotal').textContent = money(priceEach * qty);
+});
+// Tự động điền ngày hôm nay và giờ hiện tại vào form Đặt dịch vụ
+window.addEventListener('DOMContentLoaded', function() {
+    const today = new Date();
+
+    // Lấy ngày hiện tại YYYY-MM-DD
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    const currentDate = `${yyyy}-${mm}-${dd}`;
+
+    // Lấy giờ hiện tại HH:MM
+    const hh = String(today.getHours()).padStart(2, '0');
+    const min = String(today.getMinutes()).padStart(2, '0');
+    const currentTime = `${hh}:${min}`;
+
+    // Gán giá trị mặc định cho ô Ngày & Giờ
+    const dateInput = document.getElementById('bookDate');
+    const timeInput = document.getElementById('bookTime');
+
+    if (dateInput && !dateInput.value) dateInput.value = currentDate;
+    if (timeInput && !timeInput.value) timeInput.value = currentTime;
+
+    // Bấm vào đâu trên ô cũng tự bật bảng chọn Ngày / Giờ
+    [dateInput, timeInput].forEach(input => {
+        if (input) {
+            input.addEventListener('click', function() {
+                if (typeof this.showPicker === 'function') {
+                    this.showPicker();
+                }
+            });
+        }
+    });
+});
+</script></body></html>

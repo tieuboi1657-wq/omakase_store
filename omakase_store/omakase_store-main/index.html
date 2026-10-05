@@ -1,0 +1,418 @@
+<html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trang Chủ - Sabi Omakase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">祥</span>
+        <span class="brand-text">SABI OMAKASE <small>一期一会</small></span>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html" class="active">Trang chủ</a>
+        <a href="Omakase_Menu.html">Thực đơn</a>
+        <a href="hoso_order_thanhtoan.html?view=booking">Đặt chỗ</a>
+        <a href="index.html#triet-ly">Về chúng tôi</a>
+        <a href="danhgia.html">Liên hệ</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="Omakase_Search.html" class="icon-btn" title="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <button class="icon-btn" title="Giỏ đặt bàn"
+          onclick="location.href='hoso_order_thanhtoan.html?view=cart'"><i class="fa-solid fa-bag-shopping"></i><span class="badge">1</span></button>
+        <a href="login.html" class="avatar-btn" title="Tài khoản / Đăng nhập"><i class="fa-regular fa-user"></i></a>
+        <a href="hoso_order_thanhtoan.html?view=booking" class="btn btn-primary">ĐẶT BÀN</a>
+      </div>
+    </div>
+  </header>
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <p class="eyebrow">TRẢI NGHIỆM ẨM THỰC TỐI THƯỢNG — 一期一会</p>
+        <h1>Nghệ Thuật Omakase — Tinh Hoa Nhật Bản Khởi Nguồn Từ Đam Mê</h1>
+        <p>Dưới bàn tay điêu luyện của nghệ nhân, từng thớ cá Toyosu hòa quyện cùng hạt gạo Koshihikari ủ giấm Akazu.
+          Một khoảnh khắc tĩnh lặng, nơi vị giác giao hòa cùng triết lý vạn vật vô thường.</p>
+        <div class="hero-actions">
+          <a href="Omakase_Menu.html" class="btn btn-primary">Xem Thực Đơn &rarr;</a>
+          <a href="hoso_order_thanhtoan.html?view=booking" class="btn btn-outline">Đặt Bàn Ngay</a>
+        </div>
+      </div>
+
+      <!-- Ô tìm chỗ trống -->
+      <div class="booking-widget">
+        <div class="field">
+          <label>Gói Omakase</label>
+          <!-- TODO: dữ liệu gói món lấy từ trang Thực đơn (chưa dựng) -->
+          <select>
+            <option>Tất cả set Omakase</option>
+            <option>Set Kiwami</option>
+            <option>Set Matsu</option>
+            <option>Set Sakura Seasonal</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Ngày dự kiến</label>
+          <input type="date" id="slotDate" />
+        </div>
+        <div class="field">
+          <label>Số lượng khách</label>
+          <select id="slotGuests">
+            <option>2 Khách (Trải nghiệm đôi)</option>
+            <option>4 Khách</option>
+            <option>6 Khách</option>
+          </select>
+        </div>
+        <a href="hoso_order_thanhtoan.html?view=booking" id="findSlot" class="btn btn-primary">&#128269; Tìm Chỗ
+          Trống</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HÀNH TRÌNH VỊ GIÁC ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">HƯƠNG VỊ BỐN MÙA</p>
+          <h2>Hành Trình Vị Giác</h2>
+        </div>
+        <p>Mỗi khía cạnh trong thực đơn Omakase là một nốt nhạc tinh tế hòa điệu giữa kỹ nghệ chế tác và tôn vinh
+          nguồn
+          dưỡng chất tự nhiên.</p>
+      </div>
+
+      <div class="category-grid">
+        <!-- TODO: mỗi danh mục nối sang trang Thực đơn lọc theo danh mục tương ứng (chưa dựng) -->
+        <a href="Omakase_Menu.html">
+          <img src="images/exquisite-japanese-omakase-platter-with-delicately-arranged-sashimi_167857-53957.jpg"
+            alt="Nigiri Omakase" />
+          <h3>Nigiri Omakase</h3>
+          <span>18 Món kinh điển</span>
+        </a>
+        <a href="Omakase_Menu.html">
+          <img src="images/sashimi.jpg" alt="Sashimi Cao Cấp" />
+          <h3>Sashimi Cao Cấp</h3>
+          <span>12 Loại cá tươi</span>
+        </a>
+        <a href="Omakase_Menu.html">
+          <img src="images/kaiseki.jpg" alt="Kaiseki Truyền Thống" />
+          <h3>Kaiseki Truyền Thống</h3>
+          <span>8 Món yến tiệc</span>
+        </a>
+        <a href="Omakase_Menu.html">
+          <img src="images/sake.jpg" alt="Sake Tuyển Chọn" />
+          <h3>Sake Tuyển Chọn</h3>
+          <span>24 Dòng rượu quý</span>
+        </a>
+        <a href="Omakase_Menu.html">
+          <img src="images/wagashi.jpg" alt="Tráng Miệng Wagashi" />
+          <h3>Tráng Miệng Wagashi</h3>
+          <span>6 Vị thanh tao</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SET OMAKASE ĐẶC TRƯNG ============ -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">THỰC ĐƠN ĐỘC BẢN</p>
+          <h2>Set Omakase Đặc Trưng</h2>
+        </div>
+        <a href="Omakase_Menu.html">Xem Tất Cả Thực Đơn &#8599;</a>
+      </div>
+
+      <div class="card-grid">
+        <article class="dish-card">
+          <div class="thumb">
+            <img src="images/kiwami.jpg" alt="Set Kiwami" />
+            <span class="tag">CHEF'S SIGNATURE</span>
+          </div>
+          <div class="body">
+            <p class="rating"><strong>5.0</strong> (48 đánh giá)</p>
+            <h3>Set Kiwami - 18 Món Thượng Hạng</h3>
+            <p>Đỉnh cao nghệ thuật Omakase với Bào ngư hấp rượu Sake, Otoro...</p>
+            <div class="price-row">
+              <span class="price">3.800.000đ<small>Giá mỗi khách</small></span>
+              <a href="Omakase_Detail.html?id=kiwami" class="btn btn-outline" style="padding:8px 14px;font-size:12px;">Xem Chi
+                Tiết</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <div class="thumb">
+            <img src="images/natsu.jpg" alt="Set Matsu" />
+            <span class="tag">BEST SELLER</span>
+          </div>
+          <div class="body">
+            <p class="rating"><strong>5.0</strong> (51 đánh giá)</p>
+            <h3>Set Matsu - Tinh Hoa Đại Dương</h3>
+            <p>Hòa mình vào hương vị biển khơi thuần khiết cùng 15 nốt vị hải sản.</p>
+            <div class="price-row">
+              <span class="price">3.200.000đ<small>Giá mỗi khách</small></span>
+              <a href="Omakase_Detail.html?id=sashimi-matsu" class="btn btn-outline"
+                style="padding:8px 14px;font-size:12px;">Xem Chi Tiết</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <div class="thumb">
+            <img src="images/sakura.jpg" alt="Set Sakura Seasonal" />
+            <span class="tag">SEASONAL EDITION</span>
+          </div>
+          <div class="body">
+            <p class="rating"><strong>5.0</strong> (29 đánh giá)</p>
+            <h3>Set Sakura Seasonal</h3>
+            <p>Sắc xuân xứ Phù Tang thể hiện qua cá Tráp Madai, mực đơm đóm Hota...</p>
+            <div class="price-row">
+              <span class="price">3.200.000đ<small>Giá mỗi khách</small></span>
+              <a href="Omakase_Detail.html?id=sakura" class="btn btn-outline" style="padding:8px 14px;font-size:12px;">Xem Chi
+                Tiết</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <div class="thumb">
+            <img src="images/wagyu.jpg" alt="Set Omakase Wagyu & Otoro" />
+            <span class="tag">OMAKASE PREMIUM</span>
+          </div>
+          <div class="body">
+            <p class="rating"><strong>5.0</strong> (64 đánh giá)</p>
+            <h3>Set Omakase Wagyu &amp; Otoro</h3>
+            <p>Sự hòa hợp hoàn hảo giữa Bò Miyazaki A5 nướng than Binchotan...</p>
+            <div class="price-row">
+              <span class="price">4.800.000đ<small>Giá mỗi khách</small></span>
+              <a href="Omakase_Detail.html?id=wagyu" class="btn btn-outline" style="padding:8px 14px;font-size:12px;">Xem Chi
+                Tiết</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRIẾT LÝ ============ -->
+  <section class="section" id="triet-ly">
+    <div class="container philosophy">
+      <div class="portrait">
+        <img src="images/chef.jpg" alt="Chef Daiki Takahashi" style="width:100%;height:100%;object-fit:cover;" />
+        <div class="chef-tag">
+          &#26408; Chef Daiki Takahashi
+          <small>25 Năm Kinh Nghiệm Ginza, Tokyo</small>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow">TRIẾT LÝ WABI-SABI · 侘寂</p>
+        <h2>Triết Lý Sabi Omakase — Gửi Trọn Niềm Tin Vào Đôi Tay Nghệ Nhân</h2>
+        <p>Trong tiếng Nhật, "Omakase" mang ý nghĩa giao phó hoàn toàn trải nghiệm ẩm thực cho người đầu bếp. Tại
+          Sabi,
+          chúng tôi không đơn thuần dọn lên một bữa tiệc, mà là một cuộc hành trình đối thoại không lời giữa vị giác
+          của
+          thực khách và tâm hồn người chế tác, thấu cảm sự hoàn hảo trong nét dung dị nguyên bản.</p>
+        <div class="pillars">
+          <div>
+            <p class="num">01.</p>
+            <h4>Hải Sản Toyosu</h4>
+            <p>Được tuyển chọn trực tiếp tại chợ đầu mối Toyosu (Tokyo) mỗi sớm và chuyển bằng đường hàng không trong
+              ngày.</p>
+          </div>
+          <div>
+            <p class="num">02.</p>
+            <h4>Giấm Đỏ Akazu</h4>
+            <p>Gạo Koshihikari phối trộn giấm đỏ ủ từ hèm rượu sake thượng hạng suốt 3 năm, nâng tầm vị ngọt béo của
+              từng lát cá.</p>
+          </div>
+          <div>
+            <p class="num">03.</p>
+            <h4>12 Chỗ Ngồi Riêng Tư</h4>
+            <p>Không gian giới hạn tối đa 12 vị khách để bếp trưởng có thể chăm chút từng chi tiết nhỏ nhất trong suốt
+              120 phút phục vụ.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BANNER ƯU ĐÃI ============ -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="promo-banner">
+        <div>
+          <p class="eyebrow">ĐẶC QUYỀN HỘI VIÊN · 予約特典</p>
+          <h2>Ưu Đãi Đặt Bàn Trước 7 Ngày — Tặng Kèm 01 Bình Sake Junmai Daiginjo Thượng Hạng</h2>
+          <p>Dành riêng cho thực khách đặt chỗ sớm cho nhóm từ 2 khách trở lên tại tất cả các cơ sở trực thuộc Sabi
+            Omakase.</p>
+        </div>
+        <a href="hoso_order_thanhtoan.html?view=booking" class="btn btn-primary" style="white-space:nowrap;">Nhận Ưu Đãi
+          Ngay</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KHÔNG GIAN TRẢI NGHIỆM ============ -->
+  <section class="section" id="chi-nhanh">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">HỆ THỐNG NHÀ HÀNG</p>
+          <h2>Không Gian Trải Nghiệm</h2>
+        </div>
+        <p>Mỗi không gian được kiến tạo theo tinh thần kiến trúc Sukiya-zukuri thanh tịnh, tôn trọng sự riêng tư và vẻ
+          đẹp của vật liệu tự nhiên.</p>
+      </div>
+
+      <div class="location-grid">
+        <article class="location-card">
+          <div class="thumb">
+            <img src="images/quan1.jpg" alt="Chi nhánh Quận 1" style="width:100%;height:100%;object-fit:cover;" />
+            <span class="tag">QUẬN 1 · TRUNG TÂM</span>
+          </div>
+          <div class="body">
+            <h3>Sabi Omakase — Chi Nhánh Quận 1</h3>
+            <p class="meta">&#128205; 12 đường số 3, Phường 4, Thành phố 6</p>
+            <p class="meta">&#128222; +123456789</p>
+            <p class="meta">&#128340; Trưa: 11:30 - 14:00 | Tối: 17:30 - 22:30</p>
+            <div class="actions">
+              <a href="hoso_order_thanhtoan.html?view=booking" class="btn btn-primary">Đặt Bàn Tại Đây</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=12+%C4%91%C6%B0%E1%BB%9Dng+s%E1%BB%91+3+Ph%C6%B0%E1%BB%9Dng+4+Qu%E1%BA%ADn+5"
+                target="_blank" rel="noopener" class="btn btn-outline icon-square">&#128506;</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="location-card">
+          <div class="thumb">
+            <img src="images/quan5.jpg" alt="Chi nhánh Quận 5" style="width:100%;height:100%;object-fit:cover;" />
+            <span class="tag">QUẬN 5 · FLAGSHIP</span>
+          </div>
+          <div class="body">
+            <h3>Sabi Omakase — Chi Nhánh Quận 5</h3>
+            <p class="meta">&#128205; 12 đường số 3, Phường 4, Thành phố 6</p>
+            <p class="meta">&#128222; +123456789</p>
+            <p class="meta">&#128340; Tối: 17:30 - 23:00 (Chỉ phục vụ 2 tối)</p>
+            <div class="actions">
+              <a href="hoso_order_thanhtoan.html?view=booking" class="btn btn-primary">Đặt Bàn Tại Đây</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=12+%C4%91%C6%B0%E1%BB%9Dng+s%E1%BB%91+3+Ph%C6%B0%E1%BB%9Dng+4+Qu%E1%BA%ADn+5"
+                target="_blank" rel="noopener" class="btn btn-outline icon-square">&#128506;</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="location-card">
+          <div class="thumb">
+            <img src="images/tayho.jpg" alt="Chi nhánh Tây Hồ" style="width:100%;height:100%;object-fit:cover;" />
+            <span class="tag">TÂY HỒ · VEN HỒ</span>
+          </div>
+          <div class="body">
+            <h3>Sabi Omakase — Chi Nhánh Tây Hồ</h3>
+            <p class="meta">&#128205; 12 đường số 3, Phường 4, Thành phố 6</p>
+            <p class="meta">&#128222; +123456789</p>
+            <p class="meta">&#128340; Trưa: 11:30 - 14:00 | Tối: 17:30 - 22:30</p>
+            <div class="actions">
+              <a href="hoso_order_thanhtoan.html?view=booking" class="btn btn-primary">Đặt Bàn Tại Đây</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=12+%C4%91%C6%B0%E1%BB%9Dng+s%E1%BB%91+3+Ph%C6%B0%E1%BB%9Dng+4+Qu%E1%BA%ADn+5"
+                target="_blank" rel="noopener" class="btn btn-outline icon-square">&#128506;</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUOTE ============ -->
+  <section class="quote-section">
+    <div class="quote-mark">&#10077;</div>
+    <blockquote>"Omakase không chỉ là bữa ăn, đó là nghi thức tôn kính cái đẹp mong manh của thời khắc."</blockquote>
+    <cite>— Đầu bếp Daiki Takahashi</cite>
+    <a href="hoso_order_thanhtoan.html?view=booking" class="btn btn-primary">Khởi Đầu Trải Nghiệm Của Quý Khách</a>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="brand-mark">祥</span>
+            <span class="footer-brand-name">SABI OMAKASE</span>
+          </div>
+          <p class="footer-about">Tận hưởng triết lý Wabi Sabi qua từng thớ cá tinh khiết. Nơi nghệ thuật ẩm thực giao
+            hòa giữa sự tối giản thuần túy và nghi thức ẩm thực thượng lưu Nhật Bản.</p>
+          <p class="footer-about">TOKYO &middot; KYOTO &middot; SAIGON</p>
+        </div>
+        <div>
+          <h4>Điều hướng</h4>
+          <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <!-- TODO: nối sang trang Thực đơn (chưa dựng) -->
+            <li><a href="Omakase_Menu.html">Thực đơn Omakase</a></li>
+            <!-- TODO: nối sang trang Đặt chỗ & Giỏ hàng (chưa dựng) -->
+            <li><a href="hoso_order_thanhtoan.html?view=cart">Đặt chỗ &amp; Giỏ hàng</a></li>
+            <!-- TODO: nối sang trang Lịch sử đặt tiệc (chưa dựng) -->
+            <li><a href="lich-su-dat-cho.html">Lịch sử đặt tiệc</a></li>
+            <!-- TODO: nối sang trang/section Về chúng tôi (chưa dựng) -->
+            <li><a href="index.html#triet-ly">Về chúng tôi</a></li>
+            <!-- TODO: nối sang trang Liên hệ (chưa dựng) -->
+            <li><a href="danhgia.html">Liên hệ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Liên hệ</h4>
+          <ul>
+            <li>&#128222; +123456789</li>
+            <li>&#9993; reservation@sabiomakase.com</li>
+            <li>&#128205; 12 đường số 3, Phường 4, Thành phố 6</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Giờ mở cửa</h4>
+          <ul>
+            <li>Thứ 2 - Thứ 6: 17:30 - 22:30</li>
+            <li>Thứ 7 - CN: 11:30 - 14:00 / 17:30 - 23:00</li>
+          </ul>
+          <a href="hoso_order_thanhtoan.html?view=booking" class="btn btn-outline"
+            style="margin-top:12px;font-size:12px;padding:8px 14px;">Chỉ Nhận Phục
+            Vụ
+            Đặt Trước</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2024 Sabi Omakase. Bản quyền thuộc về nhà hàng.</span>
+        <span>Cam kết nguồn nguyên liệu tươi nhập trực tiếp từ chợ Toyosu mỗi sáng.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const d = document.getElementById('slotDate');
+    d.value = new Date().toISOString().slice(0, 10); d.min = d.value;
+    document.getElementById('findSlot').addEventListener('click', function () {
+      const q = parseInt(document.getElementById('slotGuests').value) || 2;
+      this.href = 'hoso_order_thanhtoan.html?view=booking&date=' + d.value + '&qty=' + q;
+    });
+  </script>
+</body>
+
+</html>

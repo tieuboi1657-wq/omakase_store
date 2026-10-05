@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabi Omakase - Thực Đơn</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/Omakase_Menu.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">祥</span>
+        <span class="brand-text">SABI OMAKASE <small>一期一会</small></span>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html">Trang chủ</a>
+        <a href="Omakase_Menu.html" class="active">Thực đơn</a>
+        <a href="hoso_order_thanhtoan.html?view=booking">Đặt chỗ</a>
+        <a href="index.html#triet-ly">Về chúng tôi</a>
+        <a href="danhgia.html">Liên hệ</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="Omakase_Search.html" class="icon-btn" title="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <button class="icon-btn" title="Giỏ đặt bàn"
+          onclick="location.href='hoso_order_thanhtoan.html?view=cart'"><i class="fa-solid fa-bag-shopping"></i><span class="badge">1</span></button>
+        <a href="login.html" class="avatar-btn" title="Tài khoản / Đăng nhập"><i class="fa-regular fa-user"></i></a>
+        <a href="hoso_order_thanhtoan.html?view=booking" class="btn btn-primary">ĐẶT BÀN</a>
+      </div>
+    </div>
+  </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="breadcrumb">
+            <span>Trang chủ</span> / <span class="current">Thực đơn Omakase</span>
+        </div>
+        <div class="header-content">
+            <div class="header-text">
+                <span class="tag"><i class="fa-solid fa-circle" style="font-size: 6px; margin-right: 5px;"></i> TOYOSU
+                    DAILY SELECTION</span>
+                <h1>Thực Đơn Omakase Thượng Hạng</h1>
+                <p>Tuyển chọn hải sản tươi sống đánh bắt theo mùa và vận chuyển hỏa tốc trực tiếp từ chợ cá Toyosu
+                    (Tokyo). Trải nghiệm nét giao hòa của nghệ thuật dao kiếm Edomae và kỹ thuật dưỡng vị Wabi-Sabi tinh
+                    tế.</p>
+            </div>
+            <div class="header-info-card">
+                <div class="icon"><i class="fa-solid fa-utensils"></i></div>
+                <div class="info">
+                    <div class="title">QUY CHUẨN PHỤC VỤ</div>
+                    <div class="desc">12 Khách / Phiên Counter</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Sidebar Filter -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fa-solid fa-sliders"></i> Bộ Lọc</h3>
+                <button class="clear-btn">XÓA BỘ LỌC</button>
+            </div>
+
+            <div class="filter-group">
+                <h4>LOẠI SET OMAKASE</h4>
+                <label class="checkbox-container">Omakase Trưa (Lunch)
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox-container">Omakase Tối Cao Cấp
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox-container">Kaiseki 12 Món Truyền Thống
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox-container">Set Theo Mùa Đặc Biệt
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox-container">Set Bò Wagyu A5 & Otoro
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+
+            <div class="filter-group">
+                <h4>KHOẢNG GIÁ <span class="price-val">3.500.000 đ</span></h4>
+                <input type="range" min="1500000" max="5000000" value="3500000" class="slider">
+                <div class="slider-labels">
+                    <span>1.500.000 đ</span>
+                    <span>5.000.000 đ</span>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h4>SỐ LƯỢNG MÓN</h4>
+                <label class="radio-container">8 - 12 Món (Nhẹ nhàng)
+                    <input type="radio" name="mon">
+                    <span class="radiomark"></span>
+                </label>
+                <label class="radio-container">14 - 18 Món (Tiêu chuẩn)
+                    <input type="radio" name="mon" checked>
+                    <span class="radiomark"></span>
+                </label>
+                <label class="radio-container">20+ Món (Đặc biệt cao cấp)
+                    <input type="radio" name="mon">
+                    <span class="radiomark"></span>
+                </label>
+            </div>
+
+            <div class="filter-group">
+                <h4>BẾP TRƯỞNG PHỤ TRÁCH</h4>
+                <label class="checkbox-container">
+                    <div>
+                        <div>Chef Daiki Takahashi</div>
+                        <div class="sub-text">Master Edomae (Ginza, Tokyo)</div>
+                    </div>
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox-container">
+                    <div>
+                        <div>Chef Kenji Sato</div>
+                        <div class="sub-text">Kaiseki Specialist (Kyoto)</div>
+                    </div>
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox-container">
+                    <div>
+                        <div>Chef Hiroshi Mori</div>
+                        <div class="sub-text">Sashimi & Sake Sommelier</div>
+                    </div>
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+
+            <div class="filter-actions">
+                <button class="btn-primary w-100"><i class="fa-solid fa-filter" style="margin-right: 5px;"></i> ÁP DỤNG
+                    BỘ LỌC</button>
+                <button class="btn-outline w-100 mt-10">ĐẶT LẠI MẶC ĐỊNH</button>
+            </div>
+        </aside>
+
+        <!-- Product List -->
+        <div class="product-area">
+            <div class="product-top-bar">
+                <div>Hiển thị <strong>12</strong> set Omakase tuyển chọn</div>
+                <div class="sort-by">
+                    SẮP XẾP:
+                    <div class="custom-select-wrapper">
+                        <select class="custom-select">
+                            <option>Được yêu thích nhất</option>
+                            <option>Giá tăng dần</option>
+                            <option>Giá giảm dần</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                <!-- Card 1 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <span class="product-tag tag-red">CHEF'S CHOICE</span>
+                        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=600&auto=format&fit=crop"
+                            alt="Sushi">
+                        <div class="product-meta">
+                            <div><i class="fa-solid fa-star"></i> 5.0 (48 đánh giá)</div>
+                            <div class="meta-separator"></div>
+                            <div><i class="fa-regular fa-clock"></i> 120 phút</div>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-subtitle">極上 おまかせ - 18 MÓN</div>
+                        <h3 class="product-title">Set Kiwami Grand...</h3>
+                        <p class="product-desc">Trải nghiệm đỉnh cao với Otoro ủ lạnh 14 ngày, Bào ngư Ezo hầm rượu
+                            Sake...</p>
+                        <div class="product-bottom">
+                            <div class="product-price">Giá cho 1 khách<span class="val">3.800.000 đ</span></div>
+                            <button class="btn-detail" onclick="location.href='Omakase_Detail.html?id=kiwami'">XEM CHI TIẾT</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <span class="product-tag tag-dark">SIGNATURE</span>
+                        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=600&auto=format&fit=crop"
+                            alt="Sashimi">
+                        <div class="product-meta">
+                            <div><i class="fa-solid fa-star"></i> 5.0 (36 đánh giá)</div>
+                            <div class="meta-separator"></div>
+                            <div><i class="fa-regular fa-clock"></i> 105 phút</div>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-subtitle">雅 懐石 - 14 MÓN</div>
+                        <h3 class="product-title">Set Miyabi Kaiseki</h3>
+                        <p class="product-desc">Sự hài hòa thi vị giữa các món nướng than Binchotan thơm nồng và
+                            Sashi...</p>
+                        <div class="product-bottom">
+                            <div class="product-price">Giá cho 1 khách<span class="val">2.800.000 đ</span></div>
+                            <button class="btn-detail" onclick="location.href='Omakase_Detail.html?id=miyabi'">XEM CHI TIẾT</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <span class="product-tag tag-dark">TRADITIONAL</span>
+                        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?q=80&w=600&auto=format&fit=crop"
+                            alt="Nigiri">
+                        <div class="product-meta">
+                            <div><i class="fa-solid fa-star" style="color: #a0a0a0;"></i> 4.9 (52 đánh giá)</div>
+                            <div class="meta-separator"></div>
+                            <div><i class="fa-regular fa-clock"></i> 90 phút</div>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-subtitle">月 握り - 12 MÓN</div>
+                        <h3 class="product-title">Set Tsuki Nigiri...</h3>
+                        <p class="product-desc">Khám phá nghệ thuật cơm giấm đỏ Akasu bí truyền đi kèm 10 tuyệt phẩ...
+                        </p>
+                        <div class="product-bottom">
+                            <div class="product-price">Giá cho 1 khách<span class="val">1.950.000 đ</span></div>
+                            <button class="btn-detail" onclick="location.href='Omakase_Detail.html?id=tsuki'">XEM CHI TIẾT</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <span class="product-tag tag-red">LIMITED SEASONAL</span>
+                        <img src="https://images.unsplash.com/photo-1617196034183-421b4917c92d?q=80&w=600&auto=format&fit=crop"
+                            alt="Seasonal">
+                        <div class="product-meta">
+                            <div><i class="fa-solid fa-star"></i> 5.0 (29 đánh giá)</div>
+                            <div class="meta-separator"></div>
+                            <div><i class="fa-regular fa-clock"></i> 120 phút</div>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-subtitle">桜 季節限定 - 16 MÓN</div>
+                        <h3 class="product-title">Set Sakura Seasonal...</h3>
+                        <p class="product-desc">Hương vị đầu mùa đặc trưng với Mực đom đóm Toyama, Cá thu Sawara xô...
+                        </p>
+                        <div class="product-bottom">
+                            <div class="product-price">Giá cho 1 khách<span class="val">3.200.000 đ</span></div>
+                            <button class="btn-detail" onclick="location.href='Omakase_Detail.html?id=sakura'">XEM CHI TIẾT</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <span class="product-tag tag-red">PRESTIGE</span>
+                        <img src="./images/wagyu_otoro.jpg"
+                            alt="Wagyu">
+                        <div class="product-meta">
+                            <div><i class="fa-solid fa-star"></i> 5.0 (64 đánh giá)</div>
+                            <div class="meta-separator"></div>
+                            <div><i class="fa-regular fa-clock"></i> 135 phút</div>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-subtitle">和牛 & 大トロ - 20 MÓN</div>
+                        <h3 class="product-title">Set Wagyu & Otoro...</h3>
+                        <p class="product-desc">Sự thăng hoa tuyệt đối giữa Bò Wagyu A5 tỉnh Miyazaki và Bụng cá ngừ
+                            vây...</p>
+                        <div class="product-bottom">
+                            <div class="product-price">Giá cho 1 khách<span class="val">4.800.000 đ</span></div>
+                            <button class="btn-detail" onclick="location.href='Omakase_Detail.html?id=wagyu'">XEM CHI TIẾT</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <span class="product-tag tag-dark">LUNCH EXCLUSIVE</span>
+                        <img src="https://images.unsplash.com/photo-1558985250-27a406d64cb3?q=80&w=600&auto=format&fit=crop"
+                            alt="Lunch">
+                        <div class="product-meta">
+                            <div><i class="fa-solid fa-star" style="color: #a0a0a0;"></i> 4.8 (41 đánh giá)</div>
+                            <div class="meta-separator"></div>
+                            <div><i class="fa-regular fa-clock"></i> 60 phút</div>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-subtitle">天満宮 昼食 - 10 MÓN</div>
+                        <h3 class="product-title">Set Tenmangu Lunch...</h3>
+                        <p class="product-desc">Phiên trải nghiệm giờ trưa cô đọng với Chawanmushi trứng nhím biển, 8
+                            mó...</p>
+                        <div class="product-bottom">
+                            <div class="product-price">Giá cho 1 khách<span class="val">1.500.000 đ</span></div>
+                            <button class="btn-detail" onclick="location.href='Omakase_Detail.html?id=tenmangu'">XEM CHI TIẾT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination-info">
+                Hiển thị 1 - 6 trên tổng số 12 thực đơn Omakase
+            </div>
+            <div class="pagination">
+                <a href="#" class="prev"><i class="fa-solid fa-chevron-left"></i></a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#" class="next"><i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col brand-col">
+                <div class="navbar-logo" style="margin-bottom: 20px;">
+                    <div class="logo-icon"
+                        style="background-color: transparent; border: 1px solid var(--border-color); padding: 5px; border-radius: 4px;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1895/1895684.png" alt="Sabi Logo"
+                            style="width: 20px; filter: invert(1);">
+                    </div>
+                    <div>
+                        <div class="logo-text" style="font-size: 16px;">SABI OMAKASE</div>
+                    </div>
+                </div>
+                <p>Tận hưởng triết lý Wabi-Sabi qua từng thớ cá tinh khiết. Nơi nghệ thuật Omakase giao hòa giữa sự tối
+                    giản thuần túy và nghi thức ẩm thực thượng lưu Nhật Bản.</p>
+                <div class="locations">TOKYO • KYOTO • SAIGON</div>
+            </div>
+            <div class="footer-col">
+                <h4>Điều hướng</h4>
+                <ul>
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="#">Thực đơn Omakase</a></li>
+                    <li><a href="#">Đặt chỗ & Giỏ hàng</a></li>
+                    <li><a href="#">Lịch sử đặt tiệc</a></li>
+                    <li><a href="#">Về chúng tôi</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Liên hệ</h4>
+                <ul>
+                    <li><i class="fa-solid fa-phone"></i> +123456789</li>
+                    <li><i class="fa-solid fa-envelope"></i> reservation@sabiomakase.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> <span>12 đường số 3, Phường 4, Quận 5, Thành phố
+                            6</span></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Giờ mở cửa</h4>
+                <ul class="hours-list">
+                    <li><span>Thứ 2 - Thứ 6:</span> 17:30 - 22:30</li>
+                    <li><span>Thứ 7 - CN:</span>
+                        <div>11:30 - 14:00<br>17:30 - 23:00</div>
+                    </li>
+                </ul>
+                <button class="btn-outline w-100 mt-20" style="font-size: 10px; padding: 12px;">CHỈ NHẬN PHỤC VỤ ĐẶT
+                    TRƯỚC</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2024 Sabi Omakase. Bản quyền thuộc về nhà hàng.</div>
+            <div>Cam kết nguồn nguyên liệu tươi nhập khẩu trực tiếp từ chợ Toyosu mỗi sáng.</div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
