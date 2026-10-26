@@ -309,10 +309,12 @@ $user = current_user();
         </div>
     </footer>
 
+    <script type="application/json" id="set-data"><?= json_encode(['price' => (float)$set['gia'], 'name' => $set['ten_set']], JSON_UNESCAPED_UNICODE) ?></script>
     <script>
         let curQty = 2;
-        const setPrice = <?= (float)$set['gia'] ?>;
-        const setName = <?= json_encode($set['ten_set']) ?>;
+        const setData = JSON.parse(document.getElementById('set-data').textContent || '{}');
+        const setPrice = Number(setData.price) || 0;
+        const setName = setData.name || '';
 
         function switchThumb(el, src) {
             document.getElementById('mainImage').src = src;

@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-<html>
+<!DOCTYPE html>
 <html lang="vi">
 
 <head>

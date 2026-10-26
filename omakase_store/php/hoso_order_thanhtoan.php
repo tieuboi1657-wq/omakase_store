@@ -430,11 +430,15 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 </div><footer class="footer">SABI OMAKASE · Website bán hàng demo · Booking / Cart · User Profile · Order History</footer>
 </main></div><div class="toast" id="toast">Đã cập nhật!</div>
 
+<script type="application/json" id="data-products"><?= json_encode($products_js, JSON_UNESCAPED_UNICODE) ?></script>
+<script type="application/json" id="data-cart"><?= json_encode($session_cart, JSON_UNESCAPED_UNICODE) ?></script>
+<script type="application/json" id="data-history"><?= json_encode($history_js, JSON_UNESCAPED_UNICODE) ?></script>
+
 <script>
 // Dữ liệu sản phẩm từ PHP / Database
-const products = <?= json_encode($products_js, JSON_UNESCAPED_UNICODE) ?>;
-let cart = <?= json_encode($session_cart, JSON_UNESCAPED_UNICODE) ?>;
-let history = <?= json_encode($history_js, JSON_UNESCAPED_UNICODE) ?>;
+const products = JSON.parse(document.getElementById('data-products').textContent || '[]');
+let cart = JSON.parse(document.getElementById('data-cart').textContent || '[]');
+let history = JSON.parse(document.getElementById('data-history').textContent || '[]');
 let bookingType = 'Sushi Omakase';
 const money = n => (Number(n) || 0).toLocaleString('vi-VN') + ' ₫';
 

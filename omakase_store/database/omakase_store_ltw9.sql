@@ -83,63 +83,31 @@ LOCK TABLES `chi_tiet_don` WRITE;
 INSERT INTO `chi_tiet_don` VALUES (1,1,1,2,3800000,7600000),(2,2,5,6,4800000,28800000),(3,3,2,4,2800000,11200000),(4,4,4,2,3200000,6400000),(5,5,3,1,1950000,1950000),(6,6,2,4,2800000,11200000),(7,7,4,2,3200000,6400000),(8,8,3,1,1950000,1950000),(9,9,11,6,4900000,29400000),(10,10,6,2,1500000,3000000),(11,11,8,2,2600000,5200000),(12,12,9,3,3200000,9600000),(13,13,1,2,3800000,7600000),(14,14,5,4,4800000,19200000),(15,15,10,5,4500000,22500000),(16,16,7,2,4200000,8400000),(17,17,1,2,3800000,7600000),(18,18,1,2,480000,960000),(19,19,1,2,320000,640000);
 /*!40000 ALTER TABLE `chi_tiet_don` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER trg_ctd_ai AFTER INSERT ON chi_tiet_don FOR EACH ROW
+
+--
+-- Triggers for table `chi_tiet_don`
+--
+
+DROP TRIGGER IF EXISTS `trg_ctd_ai`;
+CREATE TRIGGER `trg_ctd_ai` AFTER INSERT ON `chi_tiet_don` FOR EACH ROW
   UPDATE don_dat_ban d
-  SET d.tam_tinh  = (SELECT COALESCE(SUM(thanh_tien),0) FROM chi_tiet_don WHERE don_id = NEW.don_id),
+  SET d.tam_tinh  = (SELECT COALESCE(SUM(thanh_tien), 0) FROM chi_tiet_don WHERE don_id = NEW.don_id),
       d.tong_tien = GREATEST(0, d.tam_tinh - d.giam_gia)
-  WHERE d.id = NEW.don_id */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER trg_ctd_au AFTER UPDATE ON chi_tiet_don FOR EACH ROW
+  WHERE d.id = NEW.don_id;
+
+DROP TRIGGER IF EXISTS `trg_ctd_au`;
+CREATE TRIGGER `trg_ctd_au` AFTER UPDATE ON `chi_tiet_don` FOR EACH ROW
   UPDATE don_dat_ban d
-  SET d.tam_tinh  = (SELECT COALESCE(SUM(thanh_tien),0) FROM chi_tiet_don WHERE don_id = NEW.don_id),
+  SET d.tam_tinh  = (SELECT COALESCE(SUM(thanh_tien), 0) FROM chi_tiet_don WHERE don_id = NEW.don_id),
       d.tong_tien = GREATEST(0, d.tam_tinh - d.giam_gia)
-  WHERE d.id = NEW.don_id */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER trg_ctd_ad AFTER DELETE ON chi_tiet_don FOR EACH ROW
+  WHERE d.id = NEW.don_id;
+
+DROP TRIGGER IF EXISTS `trg_ctd_ad`;
+CREATE TRIGGER `trg_ctd_ad` AFTER DELETE ON `chi_tiet_don` FOR EACH ROW
   UPDATE don_dat_ban d
-  SET d.tam_tinh  = (SELECT COALESCE(SUM(thanh_tien),0) FROM chi_tiet_don WHERE don_id = OLD.don_id),
+  SET d.tam_tinh  = (SELECT COALESCE(SUM(thanh_tien), 0) FROM chi_tiet_don WHERE don_id = OLD.don_id),
       d.tong_tien = GREATEST(0, d.tam_tinh - d.giam_gia)
-  WHERE d.id = OLD.don_id */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
+  WHERE d.id = OLD.don_id;
 
 --
 -- Table structure for table `danh_gia`
