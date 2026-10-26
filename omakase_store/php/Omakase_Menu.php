@@ -84,11 +84,11 @@ $sets = $stmt_sets->fetchAll();
         <a href="Omakase_Menu.php" class="active">Thực đơn</a>
         <a href="hoso_order_thanhtoan.php?view=booking">Đặt chỗ</a>
         <a href="index.php#triet-ly">Về chúng tôi</a>
-        <a href="danhgia.php">Liên hệ</a>
+        <a href="index.php#chi-nhanh">Liên hệ</a>
       </nav>
 
       <div class="header-actions">
-        <a href="Omakase_Search.php" class="icon-btn" title="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="Omakase_Menu.php" class="icon-btn" title="Thực đơn Omakase"><i class="fa-solid fa-utensils"></i></a>
         <button class="icon-btn" title="Giỏ đặt bàn"
           onclick="location.href='hoso_order_thanhtoan.php?view=cart'"><i class="fa-solid fa-bag-shopping"></i><span class="badge"><?= $cart_count ?></span></button>
         <?php if ($user): ?>
@@ -285,10 +285,9 @@ $sets = $stmt_sets->fetchAll();
                 <ul>
                     <li><a href="index.php">Trang chủ</a></li>
                     <li><a href="Omakase_Menu.php">Thực đơn Omakase</a></li>
-                    <li><a href="hoso_order_thanhtoan.php?view=cart">Đặt chỗ & Giỏ hàng</a></li>
-                    <li><a href="hoso_order_thanhtoan.php?view=history">Lịch sử đặt tiệc</a></li>
+                    <li><a href="hoso_order_thanhtoan.php?view=cart">Đặt chỗ &amp; Giỏ hàng</a></li>
                     <li><a href="index.php#triet-ly">Về chúng tôi</a></li>
-                    <li><a href="danhgia.php">Liên hệ</a></li>
+                    <li><a href="index.php#chi-nhanh">Liên hệ</a></li>
                 </ul>
             </div>
             <div class="footer-col">
