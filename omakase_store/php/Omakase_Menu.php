@@ -130,6 +130,7 @@ $sets = $stmt_sets->fetchAll();
         <!-- Sidebar Filter -->
         <aside class="sidebar">
             <form action="Omakase_Menu.php" method="GET" id="filterForm">
+                   <input type="hidden" name="sort" value="<?= htmlspecialchars($sort) ?>">
                 <div class="sidebar-header">
                     <h3><i class="fa-solid fa-sliders"></i> Bộ Lọc</h3>
                     <a href="Omakase_Menu.php" class="clear-btn" style="text-decoration:none;display:inline-block;">XÓA BỘ LỌC</a>
@@ -137,6 +138,10 @@ $sets = $stmt_sets->fetchAll();
 
                 <div class="filter-group">
                     <h4>LOẠI SET OMAKASE</h4>
+                    <label class="checkbox-container">Tất cả
+    <input type="radio" name="loai_id" value="" <?= $loai_id === null ? 'checked' : '' ?> onchange="this.form.submit()">
+    <span class="checkmark" style="border-radius:50%;"></span>
+</label>
                     <?php foreach ($all_cats as $cat): ?>
                         <label class="checkbox-container"><?= htmlspecialchars($cat['ten_loai']) ?>
                             <input type="radio" name="loai_id" value="<?= $cat['id'] ?>" <?= $loai_id == $cat['id'] ? 'checked' : '' ?> onchange="this.form.submit()">
