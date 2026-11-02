@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-<!DOCTYPE html>
+<html>
 <html lang="vi">
 
 <head>
@@ -47,7 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body>
   <div class="auth-page-centered">
     <div class="auth-split-card">
 
