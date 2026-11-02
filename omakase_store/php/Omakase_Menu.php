@@ -66,8 +66,8 @@ $sets = $stmt_sets->fetchAll();
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/Omakase_Menu.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/Omakase_Menu.css">
 </head>
 
 <body>
@@ -228,7 +228,7 @@ $sets = $stmt_sets->fetchAll();
 
             <div class="product-grid">
                 <?php foreach ($sets as $set): 
-                    $img = !empty($set['hinh_anh']) ? $set['hinh_anh'] : 'images/kiwami.jpg';
+                    $img = !empty($set['hinh_anh']) ? $set['hinh_anh'] : '../images/kiwami.jpg';
                     $tag = !empty($set['nhan']) ? $set['nhan'] : "SIGNATURE";
                     $tag_class = (strpos(strtoupper($tag), 'CHEF') !== false || $set['noi_bat']) ? 'tag-red' : 'tag-dark';
                 ?>
