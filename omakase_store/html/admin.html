@@ -84,6 +84,7 @@ tr:hover td{background:var(--panel2)}
   <div class="brand"><b>祥</b><span>SABI OMAKASE<small>QUẢN TRỊ</small></span></div>
   <nav id="nav">
     <button data-t="overview">Thống kê &amp; Tổng quan</button>
+    <button data-t="products">Quản lý Sản phẩm</button>
     <button data-t="orders">Quản lý Order</button>
     <button data-t="customers">Quản lý Khách hàng</button>
     <button data-t="revenue">Quản lý Doanh thu</button>
@@ -117,7 +118,30 @@ const pageOf = (list, p, per) => { const n = Math.max(1, Math.ceil(list.length /
 const pager = (n, p) => n < 2 ? '' : '<div class="pager">' + Array.from({ length: n }, (_, i) => `<button class="${i + 1 === p ? 'on' : ''}" data-p="${i + 1}">${i + 1}</button>`).join('') + '</div>';
 
 /* ============ DỮ LIỆU MẪU ============ */
-const SETS = [['Set Kiwami Grand Omakase', 3800000], ['Set Miyabi Kaiseki', 2800000], ['Set Tsuki Nigiri', 1950000], ['Set Sakura Seasonal', 3200000], ['Set Wagyu & Otoro', 4800000], ['Set Tenmangu Lunch', 1500000], ['Set Uni & Caviar Special', 4200000], ['Set Akami Edomae', 2600000], ['Set Sashimi Matsu', 3200000], ['Set Kaiseki Mùa Thu', 4500000], ['Set Omakase Sake Pairing', 4900000]];
+const CATEGORIES = [
+  'Omakase Tối Cao Cấp',
+  'Kaiseki 12 Món Truyền Thống',
+  'Omakase Trưa (Lunch)',
+  'Set Theo Mùa Đặc Biệt',
+  'Set Bò Wagyu A5 & Otoro'
+];
+
+let products = [
+  { id: 'KIWAMI', name: 'Set Kiwami Grand Omakase', jp: '極上 おまかせ', cat: 'Omakase Tối Cao Cấp', price: 3800000, courses: 18, duration: 120, badge: "CHEF'S CHOICE", status: 'Đang bán', img: 'images/kiwami.jpg', desc: 'Tuyệt phẩm 18 món thượng hạng với cá ngừ Otoro, nhím biển Uni và bào ngư tươi sống.' },
+  { id: 'MIYABI', name: 'Set Miyabi Kaiseki', jp: '雅 懐石', cat: 'Kaiseki 12 Món Truyền Thống', price: 2800000, courses: 14, duration: 105, badge: 'SIGNATURE', status: 'Đang bán', img: 'images/kaiseki.jpg', desc: 'Thanh tao 14 món Kaiseki tôn vinh bốn mùa Nhật Bản với nguyên liệu theo tuần.' },
+  { id: 'TSUKI', name: 'Set Tsuki Nigiri', jp: '月 握り', cat: 'Omakase Tối Cao Cấp', price: 1950000, courses: 12, duration: 90, badge: 'TRADITIONAL', status: 'Đang bán', img: 'images/omakase-sushi-chef-preparing-diverse-dishes.jpg', desc: '12 món Nigiri truyền thống từ chợ Toyosu kết hợp gạo Akazu trứ danh.' },
+  { id: 'SAKURA', name: 'Set Sakura Seasonal', jp: '桜 季節限定', cat: 'Set Theo Mùa Đặc Biệt', price: 3200000, courses: 16, duration: 120, badge: 'LIMITED SEASONAL', status: 'Đang bán', img: 'images/sakura.jpg', desc: 'Bộ sưu tập món ăn mang hương vị mùa xuân Nhật Bản, số lượng phục vụ giới hạn mỗi ngày.' },
+  { id: 'WAGYU', name: 'Set Wagyu & Otoro', jp: '和牛 & 大トロ', cat: 'Set Bò Wagyu A5 & Otoro', price: 4800000, courses: 20, duration: 135, badge: 'PRESTIGE', status: 'Đang bán', img: 'images/wagyu_otoro.jpg', desc: 'Bò Wagyu A5 Miyazaki áp chảo than hoa kết hợp thăn lưng cá ngừ đại dương Otoro béo ngậy.' },
+  { id: 'TENMANGU', name: 'Set Tenmangu Lunch', jp: '天満宮 昼食', cat: 'Omakase Trưa (Lunch)', price: 1500000, courses: 10, duration: 60, badge: 'LUNCH EXCLUSIVE', status: 'Đang bán', img: 'images/caption.jpg', desc: 'Thực đơn trưa nhanh gọn, tinh tế 10 món cho thượng khách bận rộn nhưng sành ăn.' },
+  { id: 'UNI', name: 'Set Uni & Caviar Special', jp: '雲丹 & キャビア', cat: 'Omakase Tối Cao Cấp', price: 4200000, courses: 18, duration: 120, badge: 'PREMIUM', status: 'Đang bán', img: 'images/exquisite-japanese-omakase-platter-with-delicately-arranged-sashimi_167857-53957.jpg', desc: 'Sự kết hợp đỉnh cao giữa nhím biển tươi Hokkaido và trứng cá muối Caviar hoàng gia.' },
+  { id: 'AKAMI', name: 'Set Akami Edomae', jp: '赤身 江戸前', cat: 'Omakase Tối Cao Cấp', price: 2600000, courses: 14, duration: 100, badge: 'EDOMAE', status: 'Đang bán', img: 'images/sashimi.jpg', desc: 'Phong vị Edomae cổ điển tập trung vào kỹ thuật ủ cá ngừ đỏ Akami đậm đà umami.' },
+  { id: 'MATSU', name: 'Set Sashimi Matsu', jp: '松 刺身', cat: 'Omakase Tối Cao Cấp', price: 3200000, courses: 12, duration: 90, badge: 'SASHIMI ONLY', status: 'Đang bán', img: 'images/kyoto.jpg', desc: 'Thưởng trọn vị ngọt tự nhiên của từng thớ hải sản tươi sống nhập khẩu trong ngày.' },
+  { id: 'AKI', name: 'Set Kaiseki Mùa Thu', jp: '秋 懐石', cat: 'Set Theo Mùa Đặc Biệt', price: 4500000, courses: 16, duration: 120, badge: 'SEASONAL', status: 'Đang bán', img: 'images/natsu.jpg', desc: 'Hương vị mùa thu với nấm Matsutake và cá thu đao Sanma nướng.' },
+  { id: 'SAKE', name: 'Set Omakase Sake Pairing', jp: '酒 ペアリング', cat: 'Omakase Tối Cao Cấp', price: 4900000, courses: 18, duration: 150, badge: 'PAIRING', status: 'Tạm ngừng', img: 'images/sake.jpg', desc: '18 món ăn kèm 5 dòng rượu Sake thượng hạng được tuyển chọn riêng bởi chuyên gia rượu.' }
+];
+
+let SETS = products.map(p => [p.name, p.price]);
+const syncSets = () => { SETS = products.map(p => [p.name, p.price]); };
 const PAYS = ['Thẻ', 'Chuyển khoản', 'Tiền mặt', 'Ví điện tử'];
 const OSTAT = ['Chờ xác nhận', 'Đã xác nhận', 'Hoàn tất', 'Đã hủy'];
 const TIERS = ['Thành viên', 'Vàng', 'VIP'];
@@ -181,7 +205,7 @@ const revenueByDay = days => Array.from({ length: days }, (_, i) => { const d = 
 
 /* ============ ĐIỀU HƯỚNG ============ */
 let tab = (location.hash || '#overview').slice(1);
-const S = { oq: '', os: '', op: 1, cq: '', ct: '', cp: 1, rgDays: 14, rt: '', rs: '', rst: '', wr: '', wk: 0 };
+const S = { pq: '', pc: '', ps: '', pp: 1, oq: '', os: '', op: 1, cq: '', ct: '', cp: 1, rgDays: 14, rt: '', rs: '', rst: '', wr: '', wk: 0 };
 const view = $('view');
 function go(t) { tab = TABS[t] ? t : 'overview'; location.hash = tab; document.querySelectorAll('#nav button').forEach(b => b.classList.toggle('on', b.dataset.t === tab)); TABS[tab](); scrollTo(0, 0); }
 $('nav').onclick = e => { if (e.target.dataset.t) go(e.target.dataset.t); };
@@ -206,9 +230,9 @@ function overview() {
   <div class="kpis">
     <div class="kpi"><div class="l">Doanh thu (14 ngày)</div><div class="v">${money(rev)}</div><div class="d">${ds.length} đơn hoàn tất</div></div>
     <div class="kpi"><div class="l">Tổng đơn</div><div class="v">${orders.length}</div><div class="d">${pend} đơn chờ xác nhận</div></div>
+    <div class="kpi"><div class="l">Sản phẩm / Set</div><div class="v">${products.length}</div><div class="d">${products.filter(p => p.status === 'Đang bán').length} set đang phục vụ</div></div>
     <div class="kpi"><div class="l">Khách hàng</div><div class="v">${customers.length}</div><div class="d">${customers.filter(c => c.tier === 'VIP').length} VIP · ${customers.filter(c => c.tier === 'Vàng').length} Vàng</div></div>
     <div class="kpi"><div class="l">Đánh giá trung bình</div><div class="v">${avgRating().toFixed(1)} ★</div><div class="d">${reviews.length} đánh giá</div></div>
-    <div class="kpi"><div class="l">Tỷ lệ hủy đơn</div><div class="v">${(canc / orders.length * 100).toFixed(1)}%</div><div class="d">${canc} đơn đã hủy</div></div>
     <div class="kpi"><div class="l">Nhân sự hôm nay</div><div class="v">${onDuty}/${STAFF.length}</div><div class="d">đang có ca làm</div></div>
   </div>
   <div class="grid2">
@@ -220,6 +244,162 @@ function overview() {
     <div class="panel"><h2>Đánh giá tổng quan</h2>${dist.map(d => `<div class="hbar"><span class="stars">${'★'.repeat(d[0])}</span><div class="t"><i style="width:${reviews.length ? d[1] / reviews.length * 100 : 0}%"></i></div><span>${d[1]}</span></div>`).join('')}
       <p class="sub" style="margin-top:10px">${openC} khiếu nại chưa xử lý · ${noRep} đánh giá chưa phản hồi</p></div>
   </div>`;
+}
+
+/* ============ 2. SẢN PHẨM ============ */
+const pBadge = s => `<span class="badge ${s === 'Đang bán' ? 'b-ok' : s === 'Tạm ngừng' ? 'b-warn' : 'b-bad'}">${s}</span>`;
+
+function productRows() {
+  let l = products.filter(p => 
+    (!S.ps || p.status === S.ps) &&
+    (!S.pc || p.cat === S.pc) &&
+    (!S.pq || (p.id + ' ' + p.name + ' ' + (p.jp || '') + ' ' + p.cat).toLowerCase().includes(S.pq.toLowerCase()))
+  );
+  const p = pageOf(l, S.pp, 8); S.pp = p.p;
+  $('ptb').innerHTML = p.rows.length ? p.rows.map(x => `
+    <tr>
+      <td>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <img src="${x.img || 'images/kiwami.jpg'}" alt="${esc(x.name)}" style="width:48px;height:48px;border-radius:4px;object-fit:cover;border:1px solid var(--line);background:#000;flex-shrink:0;" onerror="this.onerror=null;this.src='images/kiwami.jpg';">
+          <div>
+            <b>${esc(x.name)}</b>
+            <div class="sub"><code>${esc(x.id)}</code> ${x.jp ? `· <span>${esc(x.jp)}</span>` : ''} ${x.badge ? `· <span class="badge b-gold" style="font-size:10px;padding:1px 5px;">${esc(x.badge)}</span>` : ''}</div>
+          </div>
+        </div>
+      </td>
+      <td>${esc(x.cat)}</td>
+      <td><b>${money(x.price)}</b></td>
+      <td>${x.courses} món<div class="sub">${x.duration} phút</div></td>
+      <td>${pBadge(x.status)}</td>
+      <td>
+        <div style="display:flex;gap:6px;">
+          <button class="btn ghost sm" data-a="editp" data-id="${x.id}">Sửa</button>
+          <button class="btn ghost sm" data-a="delp" data-id="${x.id}">Xóa</button>
+        </div>
+      </td>
+    </tr>
+  `).join('') : '<tr><td colspan="6" class="empty">Không tìm thấy sản phẩm nào.</td></tr>';
+  $('ppg').innerHTML = pager(p.n, p.p);
+  $('pcnt').textContent = l.length + ' sản phẩm';
+}
+
+function products_() {
+  const activeCount = products.filter(p => p.status === 'Đang bán').length;
+  const avgP = products.length ? products.reduce((a, b) => a + b.price, 0) / products.length : 0;
+  const maxP = products.length ? Math.max(...products.map(p => p.price)) : 0;
+  
+  view.innerHTML = head('Quản lý Sản phẩm & Thực đơn', 'Quản lý danh sách set Omakase, giá bán, số món và tình trạng phục vụ.', '<button class="btn ghost" id="prcsv">Xuất CSV</button> <button class="btn" data-a="newp">+ Thêm sản phẩm</button>') + `
+  <div class="kpis">
+    <div class="kpi"><div class="l">Tổng sản phẩm</div><div class="v">${products.length}</div><div class="d">${CATEGORIES.length} danh mục ẩm thực</div></div>
+    <div class="kpi"><div class="l">Đang phục vụ</div><div class="v">${activeCount}</div><div class="d">${products.length - activeCount} tạm ngừng / ngừng bán</div></div>
+    <div class="kpi"><div class="l">Giá trung bình</div><div class="v">${money(avgP)}</div><div class="d">Cao nhất: ${money(maxP)}</div></div>
+  </div>
+  <div class="panel">
+    <div class="tools">
+      <input id="pq" placeholder="Tìm kiếm theo mã, tên món, tiếng Nhật..." value="${esc(S.pq)}">
+      <select id="pc">
+        <option value="">Tất cả danh mục</option>
+        ${CATEGORIES.map(c => `<option value="${c}" ${S.pc === c ? 'selected' : ''}>${c}</option>`).join('')}
+      </select>
+      <select id="ps">
+        <option value="">Tất cả trạng thái</option>
+        ${['Đang bán', 'Tạm ngừng', 'Ngừng bán'].map(s => `<option value="${s}" ${S.ps === s ? 'selected' : ''}>${s}</option>`).join('')}
+      </select>
+      <span class="sub" id="pcnt" style="align-self:center"></span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead>
+          <tr>
+            <th>Sản phẩm / Set Omakase</th>
+            <th>Danh mục</th>
+            <th>Đơn giá</th>
+            <th>Quy cách</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="ptb"></tbody>
+      </table>
+    </div>
+    <div id="ppg"></div>
+  </div>`;
+  
+  productRows();
+  $('pq').oninput = e => { S.pq = e.target.value; S.pp = 1; productRows(); };
+  $('pc').onchange = e => { S.pc = e.target.value; S.pp = 1; productRows(); };
+  $('ps').onchange = e => { S.ps = e.target.value; S.pp = 1; productRows(); };
+  $('ppg').onclick = e => { if (e.target.dataset.p) { S.pp = +e.target.dataset.p; productRows(); } };
+  $('prcsv').onclick = () => csv('san-pham.csv', ['Mã', 'Tên sản phẩm', 'Tiếng Nhật', 'Danh mục', 'Giá', 'Số món', 'Thời lượng (phút)', 'Nhãn', 'Trạng thái'], products.map(p => [p.id, p.name, p.jp || '', p.cat, p.price, p.courses, p.duration, p.badge || '', p.status]));
+}
+
+function productForm(p) {
+  const v = p || { id: '', name: '', jp: '', cat: CATEGORIES[0], price: 2000000, courses: 12, duration: 90, badge: '', status: 'Đang bán', img: 'images/kiwami.jpg', desc: '' };
+  modal(`<h2>${p ? 'Sửa sản phẩm: ' + esc(p.name) : 'Thêm sản phẩm mới'}</h2>
+  <div class="two">
+    <div><label>Mã sản phẩm *</label><input id="p_id" value="${esc(v.id)}" placeholder="VD: SET-KIWAMI" ${p ? 'readonly style="opacity:0.7"' : ''}></div>
+    <div><label>Đơn giá (VNĐ) *</label><input id="p_price" type="number" min="100000" step="50000" value="${v.price}"></div>
+  </div>
+  <label>Tên sản phẩm / Set *</label><input id="p_name" value="${esc(v.name)}" placeholder="VD: Set Kiwami Grand Omakase">
+  <div class="two">
+    <div><label>Tên tiếng Nhật</label><input id="p_jp" value="${esc(v.jp)}" placeholder="VD: 極上 おまかせ"></div>
+    <div><label>Danh mục</label><select id="p_cat">${CATEGORIES.map(c => `<option value="${c}" ${c === v.cat ? 'selected' : ''}>${c}</option>`).join('')}</select></div>
+  </div>
+  <div class="two">
+    <div><label>Số món phục vụ</label><input id="p_courses" type="number" min="1" max="50" value="${v.courses}"></div>
+    <div><label>Thời lượng (phút)</label><input id="p_dur" type="number" min="30" max="300" step="15" value="${v.duration}"></div>
+  </div>
+  <div class="two">
+    <div><label>Nhãn nổi bật (Badge)</label><input id="p_badge" value="${esc(v.badge)}" placeholder="VD: SIGNATURE, BEST SELLER, CHEF'S CHOICE"></div>
+    <div><label>Trạng thái</label><select id="p_status">${['Đang bán', 'Tạm ngừng', 'Ngừng bán'].map(s => `<option value="${s}" ${s === v.status ? 'selected' : ''}>${s}</option>`).join('')}</select></div>
+  </div>
+  <label>Đường dẫn hình ảnh</label><input id="p_img" value="${esc(v.img)}" placeholder="images/kiwami.jpg hoặc link URL">
+  <label>Mô tả ngắn</label><textarea id="p_desc" placeholder="Mô tả các món đặc sắc, nguyên liệu nhập khẩu...">${esc(v.desc)}</textarea>
+  <div class="err" id="err"></div>
+  <div class="acts">
+    <button class="btn ghost" data-a="close">Hủy</button>
+    <button class="btn" data-a="savep" data-id="${p ? p.id : ''}">Lưu sản phẩm</button>
+  </div>`);
+}
+
+function saveProduct(id) {
+  const code = $('p_id').value.trim().toUpperCase();
+  const name = $('p_name').value.trim();
+  const price = +$('p_price').value || 0;
+  const courses = +$('p_courses').value || 1;
+  const duration = +$('p_dur').value || 60;
+  
+  if (!code) { $('err').textContent = 'Vui lòng nhập mã sản phẩm.'; return; }
+  if (!name) { $('err').textContent = 'Vui lòng nhập tên sản phẩm.'; return; }
+  if (price <= 0) { $('err').textContent = 'Đơn giá phải lớn hơn 0.'; return; }
+  
+  if (!id && products.some(p => p.id === code)) {
+    $('err').textContent = 'Mã sản phẩm này đã tồn tại.'; return;
+  }
+  
+  const f = {
+    name,
+    jp: $('p_jp').value.trim(),
+    cat: $('p_cat').value,
+    price,
+    courses,
+    duration,
+    badge: $('p_badge').value.trim(),
+    status: $('p_status').value,
+    img: $('p_img').value.trim() || 'images/kiwami.jpg',
+    desc: $('p_desc').value.trim()
+  };
+  
+  if (id) {
+    const p = products.find(x => x.id === id);
+    if (p) Object.assign(p, f);
+  } else {
+    products.unshift({ id: code, ...f });
+  }
+  
+  syncSets();
+  closeM();
+  products_();
 }
 
 /* ============ 2. ORDER ============ */
@@ -348,13 +528,24 @@ function staff() {
   $('wr').onchange = e => { S.wr = e.target.value; staff(); };
 }
 
-const TABS = { overview, orders: orders_, customers: customers_, revenue, reviews: reviews_, staff };
+const TABS = { overview, products: products_, orders: orders_, customers: customers_, revenue, reviews: reviews_, staff };
 
 /* ============ SỰ KIỆN CHUNG ============ */
 document.addEventListener('click', e => {
   const b = e.target.closest('[data-a]'); if (!b) return;
   const a = b.dataset.a, id = b.dataset.id;
   if (a === 'close') closeM();
+  else if (a === 'newp') productForm();
+  else if (a === 'editp') productForm(products.find(p => p.id === id));
+  else if (a === 'savep') saveProduct(id);
+  else if (a === 'delp') {
+    const p = products.find(x => x.id === id);
+    if (p && confirm(`Bạn có chắc muốn xóa sản phẩm "${p.name}" (${p.id})?`)) {
+      products = products.filter(x => x !== p);
+      syncSets();
+      products_();
+    }
+  }
   else if (a === 'new') orderForm();
   else if (a === 'edit') orderForm(orders.find(o => o.id === id));
   else if (a === 'saveorder') saveOrder(id);
