@@ -187,11 +187,6 @@ label { display: block; font-size: 12px; color: var(--muted); margin: 16px 0 6px
         <button class="btn" type="submit"><i class="fa-solid fa-right-to-bracket"></i> ĐĂNG NHẬP VÀO HỆ THỐNG</button>
       </form>
 
-      <div class="demo">
-        Tài khoản mẫu: <b>admin</b> / <b>Admin@123</b>
-        <button type="button" id="fillDemo">Điền sẵn</button>
-      </div>
-
       <p class="back">
         <a href="../php/index.php">← Quay về website khách hàng</a>
       </p>
