@@ -1,17 +1,14 @@
 <?php
-// Bật session và kết nối cơ sở dữ liệu có sẵn của nhóm
 require_once __DIR__ . '/config/db.php';
 
-// ==============================================================================
-// 1. XỬ LÝ CÁC THAO TÁC: THÊM, SỬA, XOÁ (POST REQUEST)
-// ==============================================================================
+
 $msg = '';
 $msg_type = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
 
-    // --- 1.1. CHỨC NĂNG THÊM SẢN PHẨM MỚI ---
+  
     if ($action === 'add') {
         $ma_set         = strtoupper(trim($_POST['ma_set'] ?? ''));
         $ten_set        = trim($_POST['ten_set'] ?? '');
@@ -28,12 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $noi_bat        = isset($_POST['noi_bat']) ? 1 : 0;
         $trang_thai     = $_POST['trang_thai'] ?? 'Đang bán';
 
-        // Kiểm tra dữ liệu hợp lệ
+        
         if (empty($ma_set) || empty($ten_set) || $gia <= 0 || $loai_set_id <= 0) {
             $msg = 'Vui lòng điền đủ Mã set, Tên set, Danh mục và Giá bán (> 0).';
             $msg_type = 'danger';
         } else {
-            // Kiểm tra trùng lặp mã set
+            
             $check = $pdo->prepare("SELECT id FROM set_omakase WHERE ma_set = ?");
             $check->execute([$ma_set]);
             if ($check->fetch()) {
@@ -59,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // --- 1.2. CHỨC NĂNG CẬP NHẬT (SỬA) SẢN PHẨM ---
+    
     elseif ($action === 'edit') {
         $id             = (int)($_POST['id'] ?? 0);
         $ma_set         = strtoupper(trim($_POST['ma_set'] ?? ''));
@@ -107,23 +104,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // --- 1.3. CHỨC NĂNG XOÁ SẢN PHẨM ---
+    
     elseif ($action === 'delete') {
         $id = (int)($_POST['id'] ?? 0);
         if ($id > 0) {
-            // Kiểm tra sản phẩm đã phát sinh trong đơn đặt bàn chưa
+            
             $check_orders = $pdo->prepare("SELECT COUNT(*) FROM chi_tiet_don WHERE set_id = ?");
             $check_orders->execute([$id]);
             $order_count = $check_orders->fetchColumn();
 
             if ($order_count > 0) {
-                // Đã có trong đơn hàng => Đổi trạng thái sang "Ngừng bán" để bảo vệ toàn vẹn dữ liệu
+                
                 $stmt_soft = $pdo->prepare("UPDATE set_omakase SET trang_thai = 'Ngừng bán', ngay_cap_nhat = NOW() WHERE id = ?");
                 $stmt_soft->execute([$id]);
                 $msg = "Set này đã có trong {$order_count} đơn hàng lịch sử. Hệ thống đã chuyển trạng thái sang 'Ngừng bán' để bảo toàn dữ liệu!";
                 $msg_type = 'warning';
             } else {
-                // Chưa từng có đơn hàng => Xóa an toàn
+                
                 $stmt_del = $pdo->prepare("DELETE FROM set_omakase WHERE id = ?");
                 $stmt_del->execute([$id]);
                 $msg = "Đã xóa hoàn toàn set Omakase khỏi hệ thống!";
@@ -133,9 +130,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// ==============================================================================
-// 2. TÌM KIẾM, LỌC VÀ TRUY VẤN DỮ LIỆU HIỂN THỊ
-// ==============================================================================
 $categories = $pdo->query("SELECT * FROM loai_set ORDER BY thu_tu ASC")->fetchAll();
 $chefs = $pdo->query("SELECT id, ho_ten, chuc_danh FROM nhan_vien WHERE bo_phan = 'Đầu bếp' ORDER BY id ASC")->fetchAll();
 
@@ -152,7 +146,7 @@ $sql = "
 ";
 $params = [];
 
-// Tìm kiếm theo từ khóa
+
 if (!empty($keyword)) {
     $sql .= " AND (s.ten_set LIKE ? OR s.ma_set LIKE ? OR s.ten_tieng_nhat LIKE ?)";
     $kw = '%' . $keyword . '%';
@@ -161,13 +155,13 @@ if (!empty($keyword)) {
     $params[] = $kw;
 }
 
-// Lọc theo danh mục
+
 if ($filter_cat !== '' && $filter_cat > 0) {
     $sql .= " AND s.loai_set_id = ?";
     $params[] = $filter_cat;
 }
 
-// Lọc theo trạng thái
+
 if (!empty($filter_status)) {
     $sql .= " AND s.trang_thai = ?";
     $params[] = $filter_status;
@@ -423,7 +417,7 @@ $products = $stmt->fetchAll();
 </head>
 <body>
 
-  <!-- ============ SIDEBAR ============ -->
+  
   <aside class="admin-sidebar">
     <div class="brand-area">
       <div class="brand-mark">祥</div>
@@ -446,7 +440,7 @@ $products = $stmt->fetchAll();
     </nav>
   </aside>
 
-  <!-- ============ MAIN CONTENT ============ -->
+  
   <main class="admin-main">
     <header class="admin-topbar">
       <div class="topbar-title">
@@ -468,7 +462,7 @@ $products = $stmt->fetchAll();
         </div>
       <?php endif; ?>
 
-      <!-- Thanh công cụ tìm kiếm, lọc & thêm mới -->
+      
       <div class="toolbar">
         <form method="GET" action="sanpham.php" class="filter-form">
           <div class="search-box">
@@ -508,7 +502,7 @@ $products = $stmt->fetchAll();
         </button>
       </div>
 
-      <!-- Bảng danh sách sản phẩm -->
+      
       <div class="table-card">
         <div style="padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between;">
           <b>Danh Sách Set Omakase</b>
@@ -598,7 +592,7 @@ $products = $stmt->fetchAll();
     </div>
   </main>
 
-  <!-- ============ MODAL THÊM SẢN PHẨM ============ -->
+  
   <div class="modal-overlay" id="modalAdd">
     <div class="modal-dialog">
       <div class="modal-header">
@@ -705,7 +699,7 @@ $products = $stmt->fetchAll();
     </div>
   </div>
 
-  <!-- ============ MODAL SỬA SẢN PHẨM ============ -->
+ 
   <div class="modal-overlay" id="modalEdit">
     <div class="modal-dialog">
       <div class="modal-header">
