@@ -1,15 +1,11 @@
  <?php
-// Bật session và kết nối cơ sở dữ liệu
 require_once __DIR__ . '/config/db.php';
 
 $msg = '';
 $msg_type = '';
 
-// ==============================================================================
-// 1. XỬ LÝ GỬI ĐÁNH GIÁ HOẶC KHIẾU NẠI (POST REQUEST)
-// ==============================================================================
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $loai     = $_POST['loai'] ?? 'Đánh giá'; // 'Đánh giá' hoặc 'Khiếu nại'
+    $loai     = $_POST['loai'] ?? 'Đánh giá'; 
     $set_id   = (int)($_POST['set_id'] ?? 0);
     $so_sao   = isset($_POST['so_sao']) ? (int)$_POST['so_sao'] : 5;
     $noi_dung = trim($_POST['noi_dung'] ?? '');
@@ -20,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $msg = 'Vui lòng chọn Set Omakase và nhập nội dung chia sẻ.';
         $msg_type = 'warning';
     } else {
-        // Tìm hoặc tạo khách hàng nếu có họ tên / SĐT
+        
         $kh_id = null;
         if (!empty($sdt)) {
             $stmt_kh = $pdo->prepare("SELECT id FROM khach_hang WHERE so_dien_thoai = ?");
@@ -37,12 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        // Nếu chưa đăng nhập và không nhập SĐT, gán mặc định khách hàng đầu tiên
+       
         if (!$kh_id) {
             $kh_id = $pdo->query("SELECT id FROM khach_hang LIMIT 1")->fetchColumn() ?: 1;
         }
 
-        // Đánh giá mặc định hiển thị (1), khiếu nại mặc định ẩn chờ admin xử lý (0)
+        
         $hien_thi = ($loai === 'Khiếu nại') ? 0 : 1;
 
         $stmt_ins = $pdo->prepare("
@@ -61,9 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// ==============================================================================
-// 2. LẤY TẤT CẢ CÁC SET OMAKASE TỪ DATABASE
-// ==============================================================================
+
 $all_sets = $pdo->query("
     SELECT id, ma_set, ten_set, ten_tieng_nhat, gia, so_mon, thoi_luong_phut, hinh_anh, mo_ta_ngan 
     FROM set_omakase 
@@ -75,9 +69,7 @@ $default_set = !empty($all_sets) ? $all_sets[0] : [
     'gia' => 3800000, 'so_mon' => 18, 'thoi_luong_phut' => 120, 'hinh_anh' => 'images/kiwami.jpg'
 ];
 
-// ==============================================================================
-// 3. LẤY LỊCH SỬ ĐÁNH GIÁ MẪU CHO CỘT BÊN PHẢI
-// ==============================================================================
+
 $recent_reviews = $pdo->query("
     SELECT d.*, s.ten_set, s.ten_tieng_nhat 
     FROM danh_gia d 
