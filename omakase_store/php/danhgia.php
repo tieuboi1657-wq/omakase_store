@@ -1,13 +1,10 @@
 <?php
-// Bật session và kết nối cơ sở dữ liệu
 require_once __DIR__ . '/config/db.php';
 
 $msg = '';
 $msg_type = '';
 
-// ==============================================================================
-// 1. XỬ LÝ GỬI ĐÁNH GIÁ HOẶC KHIẾU NẠI (POST REQUEST)
-// ==============================================================================
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $loai     = $_POST['loai'] ?? 'Đánh giá'; // 'Đánh giá' hoặc 'Khiếu nại'
     $set_id   = (int)($_POST['set_id'] ?? 0);
@@ -18,10 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $msg = 'Vui lòng chọn Set Omakase và nhập nội dung chia sẻ.';
         $msg_type = 'warning';
     } else {
-        // Khách đã đăng nhập từ trước nên lấy id từ session
+ 
         $kh_id = (int)$_SESSION['user']['id'];
 
-        // Bước 1: tìm đơn đã "Hoàn tất" của khách, có chứa set này, chưa được đánh giá cùng loại
+        
         $stmt_don = $pdo->prepare("
             SELECT d.id
             FROM don_dat_ban d
@@ -43,8 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $msg = 'Quý khách cần hoàn tất bữa tiệc với set này tại Sabi (và chưa gửi phản hồi cho bữa đó) mới có thể gửi.';
             $msg_type = 'warning';
         } else {
-            // Bước 2: lưu đánh giá, gắn với đơn đã ăn
-            // Đánh giá hiển thị ngay (1), khiếu nại ẩn chờ admin xử lý (0)
+            
             $hien_thi = ($loai === 'Khiếu nại') ? 0 : 1;
 
             $stmt_ins = $pdo->prepare("
@@ -64,9 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// ==============================================================================
-// 2. LẤY TẤT CẢ CÁC SET OMAKASE TỪ DATABASE
-// ==============================================================================
+
 $all_sets = $pdo->query("
     SELECT id, ma_set, ten_set, ten_tieng_nhat, gia, so_mon, thoi_luong_phut, hinh_anh, mo_ta_ngan 
     FROM set_omakase 
@@ -78,9 +72,7 @@ $default_set = !empty($all_sets) ? $all_sets[0] : [
     'gia' => 3800000, 'so_mon' => 18, 'thoi_luong_phut' => 120, 'hinh_anh' => 'images/kiwami.jpg'
 ];
 
-// ==============================================================================
-// 3. LẤY LỊCH SỬ ĐÁNH GIÁ MẪU CHO CỘT BÊN PHẢI
-// ==============================================================================
+
 $recent_reviews = $pdo->query("
     SELECT d.*, s.ten_set, s.ten_tieng_nhat 
     FROM danh_gia d 
@@ -194,7 +186,7 @@ $cart_count = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 2;
       </div>
     </header>
 
-    <!-- Main Content Container -->
+    
     <main class="main-wrapper">
       <!-- Breadcrumb Bar -->
       <div class="breadcrumb-wrap">
@@ -259,9 +251,7 @@ $cart_count = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 2;
         <!-- Left Column: Forms -->
         <div class="content-main">
 
-          <!-- ============================================================ -->
-          <!-- TAB 1: FORM ĐÁNH GIÁ TRẢI NGHIỆM                            -->
-          <!-- ============================================================ -->
+         
           <div id="panel-review" class="tab-panel" role="tabpanel">
             <form method="POST" action="danhgia.php">
               <input type="hidden" name="loai" value="Đánh giá">
@@ -472,9 +462,7 @@ $cart_count = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 2;
             </form>
           </div>
 
-          <!-- ============================================================ -->
-          <!-- TAB 2: FORM BÁO CÁO SỰ CỐ & KHIẾU NẠI                       -->
-          <!-- ============================================================ -->
+         
           <div id="panel-report" class="tab-panel hidden" role="tabpanel">
             <article class="card">
               <div class="complaint-hero">
