@@ -1,63 +1,72 @@
- <?php
+<?php
+// Bật session và kết nối cơ sở dữ liệu
 require_once __DIR__ . '/config/db.php';
 
 $msg = '';
 $msg_type = '';
 
+// ==============================================================================
+// 1. XỬ LÝ GỬI ĐÁNH GIÁ HOẶC KHIẾU NẠI (POST REQUEST)
+// ==============================================================================
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $loai     = $_POST['loai'] ?? 'Đánh giá'; 
+    $loai     = $_POST['loai'] ?? 'Đánh giá'; // 'Đánh giá' hoặc 'Khiếu nại'
     $set_id   = (int)($_POST['set_id'] ?? 0);
     $so_sao   = isset($_POST['so_sao']) ? (int)$_POST['so_sao'] : 5;
     $noi_dung = trim($_POST['noi_dung'] ?? '');
-    $ho_ten   = trim($_POST['ho_ten'] ?? '');
-    $sdt      = trim($_POST['sdt'] ?? '');
 
     if (empty($set_id) || empty($noi_dung)) {
         $msg = 'Vui lòng chọn Set Omakase và nhập nội dung chia sẻ.';
         $msg_type = 'warning';
     } else {
-        
-        $kh_id = null;
-        if (!empty($sdt)) {
-            $stmt_kh = $pdo->prepare("SELECT id FROM khach_hang WHERE so_dien_thoai = ?");
-            $stmt_kh->execute([$sdt]);
-            $kh_id = $stmt_kh->fetchColumn();
+        // Khách đã đăng nhập từ trước nên lấy id từ session
+        $kh_id = (int)$_SESSION['user']['id'];
 
-            if (!$kh_id) {
-                $stmt_new_kh = $pdo->prepare("
-                    INSERT INTO khach_hang (ho_ten, so_dien_thoai, hang_thanh_vien, diem_tich_luy, ngay_tao)
-                    VALUES (?, ?, 'Thành viên', 100, NOW())
-                ");
-                $stmt_new_kh->execute([$ho_ten ?: 'Thượng khách', $sdt]);
-                $kh_id = $pdo->lastInsertId();
-            }
-        }
-
-       
-        if (!$kh_id) {
-            $kh_id = $pdo->query("SELECT id FROM khach_hang LIMIT 1")->fetchColumn() ?: 1;
-        }
-
-        
-        $hien_thi = ($loai === 'Khiếu nại') ? 0 : 1;
-
-        $stmt_ins = $pdo->prepare("
-            INSERT INTO danh_gia (khach_hang_id, set_id, so_sao, noi_dung, loai, hien_thi, ngay_danh_gia)
-            VALUES (?, ?, ?, ?, ?, ?, NOW())
+        // Bước 1: tìm đơn đã "Hoàn tất" của khách, có chứa set này, chưa được đánh giá cùng loại
+        $stmt_don = $pdo->prepare("
+            SELECT d.id
+            FROM don_dat_ban d
+            JOIN chi_tiet_don c ON c.don_id = d.id
+            WHERE d.khach_hang_id = ?
+              AND d.trang_thai = 'Hoàn tất'
+              AND c.set_id = ?
+              AND d.id NOT IN (
+                    SELECT don_id FROM danh_gia
+                    WHERE don_id IS NOT NULL AND loai = ?
+              )
+            ORDER BY d.ngay_dung DESC
+            LIMIT 1
         ");
-        $stmt_ins->execute([$kh_id, $set_id, $so_sao, $noi_dung, $loai, $hien_thi]);
+        $stmt_don->execute([$kh_id, $set_id, $loai]);
+        $don_id = $stmt_don->fetchColumn();
 
-        if ($loai === 'Khiếu nại') {
-            $msg = 'Sabi Omakase đã tiếp nhận khiếu nại của quý khách. Ban Quản Trị và Bếp Trưởng Daiki sẽ liên hệ trực tiếp trong thời gian sớm nhất!';
+        if (!$don_id) {
+            $msg = 'Quý khách cần hoàn tất bữa tiệc với set này tại Sabi (và chưa gửi phản hồi cho bữa đó) mới có thể gửi.';
             $msg_type = 'warning';
         } else {
-            $msg = 'Cảm ơn quý khách đã gửi đánh giá trải nghiệm! Lời sẻ chia của quý khách là niềm vinh hạnh to lớn của nhà hàng Sabi.';
-            $msg_type = 'success';
+            // Bước 2: lưu đánh giá, gắn với đơn đã ăn
+            // Đánh giá hiển thị ngay (1), khiếu nại ẩn chờ admin xử lý (0)
+            $hien_thi = ($loai === 'Khiếu nại') ? 0 : 1;
+
+            $stmt_ins = $pdo->prepare("
+                INSERT INTO danh_gia (khach_hang_id, set_id, don_id, so_sao, noi_dung, loai, hien_thi, ngay_danh_gia)
+                VALUES (?, ?, ?, ?, ?, ?, ?, NOW())
+            ");
+            $stmt_ins->execute([$kh_id, $set_id, $don_id, $so_sao, $noi_dung, $loai, $hien_thi]);
+
+            if ($loai === 'Khiếu nại') {
+                $msg = 'Sabi Omakase đã tiếp nhận khiếu nại của quý khách. Ban Quản Trị và Bếp Trưởng Daiki sẽ liên hệ trực tiếp trong thời gian sớm nhất!';
+                $msg_type = 'warning';
+            } else {
+                $msg = 'Cảm ơn quý khách đã gửi đánh giá trải nghiệm! Lời sẻ chia của quý khách là niềm vinh hạnh to lớn của nhà hàng Sabi.';
+                $msg_type = 'success';
+            }
         }
     }
 }
 
-
+// ==============================================================================
+// 2. LẤY TẤT CẢ CÁC SET OMAKASE TỪ DATABASE
+// ==============================================================================
 $all_sets = $pdo->query("
     SELECT id, ma_set, ten_set, ten_tieng_nhat, gia, so_mon, thoi_luong_phut, hinh_anh, mo_ta_ngan 
     FROM set_omakase 
@@ -69,7 +78,9 @@ $default_set = !empty($all_sets) ? $all_sets[0] : [
     'gia' => 3800000, 'so_mon' => 18, 'thoi_luong_phut' => 120, 'hinh_anh' => 'images/kiwami.jpg'
 ];
 
-
+// ==============================================================================
+// 3. LẤY LỊCH SỬ ĐÁNH GIÁ MẪU CHO CỘT BÊN PHẢI
+// ==============================================================================
 $recent_reviews = $pdo->query("
     SELECT d.*, s.ten_set, s.ten_tieng_nhat 
     FROM danh_gia d 
