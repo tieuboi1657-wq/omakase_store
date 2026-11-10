@@ -63,7 +63,7 @@ try {
     }
 
     if ($action === 'delete_product') {
-        $code = trim($input['id'] ?? '');
+        $code = trim($input['data']['id'] ?? $input['id'] ?? '');
         $chk = $pdo->prepare("SELECT id FROM set_omakase WHERE ma_set = ?");
         $chk->execute([$code]);
         $pid = $chk->fetchColumn();
