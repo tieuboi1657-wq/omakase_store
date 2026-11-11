@@ -63,7 +63,7 @@ try {
     }
 
     if ($action === 'delete_product') {
-        $code = trim($input['id'] ?? '');
+        $code = trim($input['data']['id'] ?? $input['id'] ?? '');
         $chk = $pdo->prepare("SELECT id FROM set_omakase WHERE ma_set = ?");
         $chk->execute([$code]);
         $pid = $chk->fetchColumn();
@@ -182,8 +182,8 @@ try {
     }
 
     if ($action === 'reply_review') {
-        $rid   = (int)($input['id'] ?? 0);
-        $reply = trim($input['reply'] ?? '');
+        $rid   = (int)($input['data']['id'] ?? $input['id'] ?? 0);
+        $reply = trim($input['data']['reply'] ?? $input['reply'] ?? '');
         $admin = current_admin();
         $nv_id = $admin['nhan_vien_id'] ?? 7;
 
@@ -198,8 +198,8 @@ try {
     }
 
     if ($action === 'resolve_review') {
-        $rid = (int)($input['id'] ?? 0);
-        $res = !empty($input['resolved']) ? 1 : 0;
+        $rid = (int)($input['data']['id'] ?? $input['id'] ?? 0);
+        $res = !empty($input['data']['resolved'] ?? $input['resolved'] ?? false) ? 1 : 0;
         $pdo->prepare("UPDATE danh_gia SET da_xu_ly = ? WHERE id = ?")->execute([$res, $rid]);
         echo json_encode(['success' => true]);
         exit;
